@@ -4,27 +4,10 @@ using UnityEngine;
 
 public class Resources
 {
-    private int food;
-    private int wood;
-    private int stone;
-    private int gold;
-
-    public int Food
-    {
-        get { return food; }
-    }
-    public int Wood
-    {
-        get { return wood; }
-    }
-    public int Stone
-    {
-        get { return stone; }
-    }
-    public int Gold
-    {
-        get { return gold; }
-    }
+    public int food;
+    public int wood;
+    public int stone;
+    public int gold;
 
     public Resources(int maxResourceAmount)
     {
