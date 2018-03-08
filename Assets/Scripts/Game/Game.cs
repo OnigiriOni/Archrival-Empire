@@ -4,19 +4,30 @@ using UnityEngine;
 
 public class Game : MonoBehaviour
 {
-    private Resources resources;
+    //Pre-Game Options
+    public int startCitizen = 5;
+    public Resources startResources = new Resources(200, 200, 0, 0);
+    public int maxPopulation = 500;
 
-    public Resources Resources
-    {
-        get { return resources; }
-    }
+    //In-Game Information
+    public Map map;
+    public Player player1;
+    public Player player2;
 
 	void Start ()
     {
-        resources = new Resources(100000);
-	}
+        //Player Setup
+        player1 = new Player(this, PlayerTag.Player1, Color.yellow, new China(), startResources);
+        player2 = new Player(this, PlayerTag.Player2, Color.green, new Germany(), startResources);
+        //Game Setup
+        map = new Map();
+        //AI Setup
+
+        //UI Setup
+        
+    }
 	
 	void Update () {
-		
+		//Game Loop
 	}
 }

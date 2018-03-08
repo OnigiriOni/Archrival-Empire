@@ -4,7 +4,8 @@ using UnityEngine;
 
 public enum PlayerTag
 {
-    Player1 = 1,
+    Gaia,
+    Player1,
     Player2,
     Player3,
     Player4,
@@ -14,39 +15,62 @@ public enum PlayerTag
     Player8
 }
 
-public enum PlayerColour
+public struct Buildings
 {
-    Blue,
-    Red,
-    Yellow,
-    Pink,
-    Green,
-    Black,
-    White,
-    Orange
+    public struct CivilBuildings
+    {
+        public List<Capitol> capitols;
+        public List<Mill> mills;
+        public List<Sawmill> sawmills;
+        public List<Mine> mines;
+        public List<Goldmine> goldmines;
+    }
+    public CivilBuildings civilBuildings;
+
+    public struct MilitaryBuildings
+    {
+        public List<Barrack> barracks;
+        public List<Stable> stables;
+        public List<Foundry> foundries;
+        public List<Tower> tower;
+    }
+    public MilitaryBuildings militaryBuildings;
 }
 
-public enum Civilization
+public struct Units
 {
-    Chinese,    //Citizen cost less food.
-    German,     //Military cost less gold.
-    Russian     //Buildings cost less wood.
+    public struct CivilUnits
+    {
+        public List<Citizen> citizens;
+    }
+    public CivilUnits civilBuildings;
+
+    public struct MilitaryUnits
+    {
+        public List<Soldier> soldiers;
+        public List<Cavalier> cavaliers;
+        public List<Artillery> artilleries;
+    }
+    public MilitaryUnits militaryBuildings;
 }
 
-public class Player : MonoBehaviour
+public class Player
 {
+    private Game game;
+    public Civilization civilization;
+    public Color playerColour;
     public PlayerTag playerTag;
-    public PlayerColour playerColour;
-
     public Resources resources;
-    
 
-	void Start () {
-        resources = new Resources(200,200,0,0);
-	}
-	
-	// Update is called once per frame
-	void Update () {
-		
-	}
+    public Buildings buildings;
+    public Units units;
+
+    public Player(Game game, PlayerTag playerTag, Color playerColour, Civilization civilization, Resources resources)
+    {
+        this.game = game;
+        this.resources = resources;
+        this.playerTag = playerTag;
+        this.playerColour = playerColour;
+        this.civilization = civilization;
+    }
 }

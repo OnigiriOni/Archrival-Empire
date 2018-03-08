@@ -2,6 +2,22 @@
 using System.Collections.Generic;
 using UnityEngine;
 
+public struct ResourceCost
+{
+    public int food;
+    public int wood;
+    public int stone;
+    public int gold;
+
+    public ResourceCost(int food, int wood, int stone, int gold)
+    {
+        this.food = food;
+        this.wood = wood;
+        this.stone = stone;
+        this.gold = gold;
+    }
+}
+
 public class Resources
 {
     public int food;
@@ -24,7 +40,7 @@ public class Resources
         gold =  maxGold;
     }
 
-    int GetFood(int amount)
+    public int GetFood(int amount)
     {
         if (food >= amount)
         {
@@ -41,7 +57,7 @@ public class Resources
 
         return 0;
     }
-    int GetWood(int amount)
+    public int GetWood(int amount)
     {
         if (wood >= amount)
         {
@@ -58,7 +74,7 @@ public class Resources
 
         return 0;
     }
-    int GetStone(int amount)
+    public int GetStone(int amount)
     {
         if (stone >= amount)
         {
@@ -75,7 +91,7 @@ public class Resources
 
         return 0;
     }
-    int GetGold(int amount)
+    public int GetGold(int amount)
     {
         if (gold >= amount)
         {
