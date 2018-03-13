@@ -23,6 +23,7 @@ public class State_Idle : State<Citizen>
     public override void Execute(Citizen citizen)
     {
         //Debug.Log("I lost tick-tack-toe against a chicken ...");
+        
     }
 
     public override void Exit(Citizen citizen)

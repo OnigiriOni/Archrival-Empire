@@ -145,7 +145,7 @@ public class Citizen : Unit
 
 
 
-    public StateMaschine<Citizen> stateMaschine;
+    private StateMaschine<Citizen> stateMaschine;
 
     public Resource targetResource;
 
@@ -166,13 +166,16 @@ public class Citizen : Unit
         // Set the PlayerTag to the players PlayerTag.
         playerTag = player.playerTag;
 
+        stateMaschine = new StateMaschine<Citizen>();
         stateMaschine.Initialize(this, State_Idle.Instance);
 
-
+        navMeshAgent = GetComponent<NavMeshAgent>();
+        navMeshAgent.SetDestination(new Vector3(130, 0, 22));
+        //navMeshAgent.destination = new Vector3(100, 0, 100);
     }
     private void Update()
     {
-        
+        stateMaschine.Update();
     }
 
     private void OnTriggerEnter(Collider other)
