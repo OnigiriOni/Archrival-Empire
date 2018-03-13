@@ -2,26 +2,27 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Soldier : Unit
+public class Soldier : MonoBehaviour
 {
-    public Soldier(PlayerTag playerTag, Color playerColour)
+    private new string name = "Soldier";
+    private float health = 100F;
+    private float fireDelay = 0.5F;
+    private Damage damage;// = new Damage(50F, 40F, 40F, 40F, 10F);
+    private BuildCost buildCost;// = new BuildCost(50, 0, 0, 25);
+    private float buildTime = 5F; // 5 seconds
+    private Player player;
+
+    /// <summary>
+    /// Receive damage. The object health goes down
+    /// </summary>
+    /// <param name="damage">The amount of damage dealt</param>
+    public void TakeDamage(float damage)
     {
-        this.playerTag = playerTag;
-        this.playerColour = playerColour;
-        name = "Soldier";
-        buildTime = 5;
+        health -= damage;
 
-        resourceCost.food = 50;
-        resourceCost.wood = 0;
-        resourceCost.stone = 0;
-        resourceCost.gold = 25;
-
-        health = 100;
-
-        damage.damageToCitizen = 50;
-        damage.damageToSoldiers = 40;
-        damage.damageToCavalier = 40;
-        damage.damageToArtillery = 40;
-        damage.damageToBuildings = 10;
+        if (health <= 0)
+        {
+            Destroy(this);
+        }
     }
 }

@@ -2,6 +2,11 @@
 using System.Collections.Generic;
 using UnityEngine;
 
+// Blue (metall / smooth mats): 0074FFFF
+// Blue (normal mats):          0039FFFF
+
+// Red  (all):                  00FF00FF
+
 public enum PlayerTag
 {
     Gaia,
@@ -15,62 +20,25 @@ public enum PlayerTag
     Player8
 }
 
-public struct Buildings
+[System.Serializable]
+public struct PlayerResource
 {
-    public struct CivilBuildings
-    {
-        public List<Capitol> capitols;
-        public List<Mill> mills;
-        public List<Sawmill> sawmills;
-        public List<Mine> mines;
-        public List<Goldmine> goldmines;
-    }
-    public CivilBuildings civilBuildings;
-
-    public struct MilitaryBuildings
-    {
-        public List<Barrack> barracks;
-        public List<Stable> stables;
-        public List<Foundry> foundries;
-        public List<Tower> tower;
-    }
-    public MilitaryBuildings militaryBuildings;
+    public int food;
+    public int wood;
+    public int stone;
+    public int gold;
 }
 
-public struct Units
+public class Player : MonoBehaviour
 {
-    public struct CivilUnits
-    {
-        public List<Citizen> citizens;
-    }
-    public CivilUnits civilBuildings;
-
-    public struct MilitaryUnits
-    {
-        public List<Soldier> soldiers;
-        public List<Cavalier> cavaliers;
-        public List<Artillery> artilleries;
-    }
-    public MilitaryUnits militaryBuildings;
-}
-
-public class Player
-{
-    private Game game;
-    public Civilization civilization;
-    public Color playerColour;
     public PlayerTag playerTag;
-    public Resources resources;
+    public Color playerColor;
+    public PlayerResource resources;
 
-    public Buildings buildings;
-    public Units units;
-
-    public Player(Game game, PlayerTag playerTag, Color playerColour, Civilization civilization, Resources resources)
-    {
-        this.game = game;
-        this.resources = resources;
-        this.playerTag = playerTag;
-        this.playerColour = playerColour;
-        this.civilization = civilization;
-    }
+    //public Player(PlayerTag playerTag, Color playerColor, PlayerResource resources)
+    //{
+    //    this.playerTag = playerTag;
+    //    this.playerColor = playerColor;
+    //    this.resources = resources;
+    //}
 }

@@ -7,6 +7,10 @@ TagManager:
   - UI Resource
   - Player1
   - Player2
+  - Resource_Food
+  - Resource_Wood
+  - Resource_Stone
+  - Resource_Gold
   layers:
   - Default
   - TransparentFX
@@ -16,7 +20,7 @@ TagManager:
   - UI
   - 
   - 
-  - 
+  - View Obstacle
   - 
   - 
   - 

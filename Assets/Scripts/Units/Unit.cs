@@ -1,60 +1,68 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.AI;
 
+[System.Serializable]
 public struct Damage
 {
-    public int damageToCitizen;
-    public int damageToSoldiers;
-    public int damageToCavalier;
-    public int damageToArtillery;
-    public int damageToBuildings;
+    public float toCitizen;
+    public float toSoldiers;
+    public float toCavalier;
+    public float toArtillery;
+    public float toBuildings;
 }
 
-public class Unit
+public class Unit : MonoBehaviour
 {
-    public string name;
+    [Header("Unit Options")]
+    public new string name;
     public float health;
+    public PlayerTag playerTag;
+    public Player player;
+    public NavMeshAgent navMeshAgent;
+
+    [Header("Build Options")]
+    public BuildCost buildCost;
+
+    // Build time in seconds
     public float buildTime;
 
-    public PlayerTag playerTag;
-    public Color playerColour;
-    
-    public ResourceCost resourceCost;
+    [Header("Combat Options")]
     public Damage damage;
 
-    public Cell currentCell;
+    // Cooldown in seconds
+    public float damageCooldown;
+    public float damageCooldownLeft;
 
-    public void MoveTo(Cell cell)
-    {
-        if (cell == currentCell) return;
 
-        currentCell.units2.Remove(this);
-        //PATHFINDING IS NECESSARY FOR THIS!!!!!!!!!!!
-        //timer ->
-         float time;
-        currentCell.connectedCells.TryGetValue(cell, out time);
-        //timer <-
-        cell.units2.Add(this);
-        currentCell = cell;
-    }
 
-    public void Attack() //Soldiers or whatever
-    {
+    //    //public void MoveTo(Cell cell)
+    //    //{
+    //    //    if (cell == currentCell) return;
 
-    }
+    //    //    currentCell.units2.Remove(this);
+    //    //    //PATHFINDING IS NECESSARY FOR THIS!!!!!!!!!!!
+    //    //    //timer ->
+    //    //     float time;
+    //    //    currentCell.connectedCells.TryGetValue(cell, out time);
+    //    //    //timer <-
+    //    //    cell.units2.Add(this);
+    //    //    currentCell = cell;
+    //    //}
 
-    public void TakeDamage(int damage)
-    {
-        health -= damage;
-        if (health <= 0)
-        {
-            Die();
-        }
-    }
+    //    public void Attack() //Soldiers or whatever
+    //    {
 
-    private void Die()
-    {
+    //    }
 
-    }
+    //    public void TakeDamage(int damage)
+    //    {
+    //        health -= damage;
+    //        if (health <= 0)
+    //        {
+    //            Die();
+    //        }
+    //    }
+
 }

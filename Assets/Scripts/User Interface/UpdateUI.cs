@@ -55,10 +55,10 @@ public class UpdateUI : MonoBehaviour
         maxPopulationValue.text = game.maxPopulation.ToString();
         startCitizenValue.text = game.startCitizen.ToString();
 
-        startFoodValue.text = game.startResources.food.ToString();
-        startWoodValue.text = game.startResources.wood.ToString();
-        startStoneValue.text = game.startResources.stone.ToString();
-        startGoldValue.text = game.startResources.gold.ToString();
+        //startFoodValue.text = game.startResources.food.ToString();
+        //startWoodValue.text = game.startResources.wood.ToString();
+        //startStoneValue.text = game.startResources.stone.ToString();
+        //startGoldValue.text = game.startResources.gold.ToString();
     }
 
     /// <summary>
@@ -66,13 +66,13 @@ public class UpdateUI : MonoBehaviour
     /// </summary>
     void UpdatePlayer1()
     {
-        civNamePlayer1.text = "Artificial Intelligence - " + game.player1.playerTag + " (" + game.player1.civilization.name + ")";
-        colorValuePlayer1.color = game.player1.playerColour;
+        //civNamePlayer1.text = "Artificial Intelligence - " + game.player1.playerTag + " (" + game.player1.civilization.name + ")";
+        //colorValuePlayer1.color = game.player1.playerColour;
 
-        foodValuePlayer1.text = game.player1.resources.food.ToString();
-        woodValuePlayer1.text = game.player1.resources.wood.ToString();
-        stoneValuePlayer1.text = game.player1.resources.stone.ToString();
-        goldValuePlayer1.text = game.player1.resources.gold.ToString();
+        //foodValuePlayer1.text = game.player1.resources.food.ToString();
+        //woodValuePlayer1.text = game.player1.resources.wood.ToString();
+        //stoneValuePlayer1.text = game.player1.resources.stone.ToString();
+        //goldValuePlayer1.text = game.player1.resources.gold.ToString();
     }
 
     /// <summary>
@@ -80,12 +80,12 @@ public class UpdateUI : MonoBehaviour
     /// </summary>
     void UpdatePlayer2()
     {
-        civNamePlayer2.text = "Artificial Intelligence - " + game.player2.playerTag + " (" + game.player2.civilization.name + ")";
-        colorValuePlayer2.color = game.player2.playerColour;
+        //civNamePlayer2.text = "Artificial Intelligence - " + game.player2.playerTag + " (" + game.player2.civilization.name + ")";
+        //colorValuePlayer2.color = game.player2.playerColour;
 
-        foodValuePlayer2.text = game.player2.resources.food.ToString();
-        woodValuePlayer2.text = game.player2.resources.wood.ToString();
-        stoneValuePlayer2.text = game.player2.resources.stone.ToString();
-        goldValuePlayer2.text = game.player2.resources.gold.ToString();
+        //foodValuePlayer2.text = game.player2.resources.food.ToString();
+        //woodValuePlayer2.text = game.player2.resources.wood.ToString();
+        //stoneValuePlayer2.text = game.player2.resources.stone.ToString();
+        //goldValuePlayer2.text = game.player2.resources.gold.ToString();
     }
 }
