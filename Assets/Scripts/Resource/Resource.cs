@@ -20,7 +20,7 @@ public struct ResourceTransferStruct
 
 public class Resource : MonoBehaviour
 {
-    public ResourceType resourceTag;
+    public ResourceType resourceType;
     public int amount;
 
     /// <summary>
@@ -45,7 +45,7 @@ public class Resource : MonoBehaviour
         // If the resource object is empty, destroy it.
         if (amount <= 0)
         {
-            Destroy(this);
+            Destroy(gameObject);
         }
     }
 }

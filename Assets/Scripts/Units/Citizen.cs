@@ -139,24 +139,20 @@ public class Citizen : Unit
     public Backpack backpack = new Backpack(15);
     public int resourceCollectionPerTick = 1;
 
-    // Resource collection in seconds
+    // Resource collection in seconds.
     public float resourceCollectionCooldown = 1F;
     public float resourceCollectionCooldownLeft = 0F;
 
-
-
     private StateMaschine<Citizen> stateMaschine;
 
+    // The target resource is accessed in the State_GatherResource.
     public Resource targetResource;
 
-    public bool isFoodResourceAvailable;
-    public bool isWoodResourceAvailable;
-    public bool isStoneResourceAvailable;
-    public bool isGoldResourceAvailable;
+    // The target gameobject is sccessed is the State_Move.
+    public GameObject targetGameObject;
 
-    public bool isMillAvailable;
-    public bool isSawmillAvailable;
-    public bool isMineAvailable;
+    // The perceived objects are used for state checks.
+    public List<GameObject> perceivedObjects;
 
 
     private void Start()
@@ -170,77 +166,46 @@ public class Citizen : Unit
         stateMaschine.Initialize(this, State_Idle.Instance);
 
         navMeshAgent = GetComponent<NavMeshAgent>();
-        navMeshAgent.SetDestination(new Vector3(130, 0, 22));
-        //navMeshAgent.destination = new Vector3(100, 0, 100);
+        //navMeshAgent.SetDestination(new Vector3(130, 0, 22));
+
+        perceivedObjects = new List<GameObject>();
+
+
+        // Test functions
+        GatherResource(GameObject.Find("Resource_Food").GetComponent<Resource>());
     }
     private void Update()
     {
         stateMaschine.Update();
+
+        // Update the cooldowns
+        resourceCollectionCooldownLeft -= Time.deltaTime;
+        damageCooldownLeft -= Time.deltaTime;
+
+        if (resourceCollectionCooldownLeft < 0)
+        {
+            resourceCollectionCooldownLeft = 0;
+        }
+        if (damageCooldownLeft < 0)
+        {
+            damageCooldownLeft = 0;
+        }
     }
+
 
     private void OnTriggerEnter(Collider other)
     {
-        if (other.tag.Equals("Resource_Food"))
+        if (!perceivedObjects.Contains(other.gameObject))
         {
-            isFoodResourceAvailable = true;
-        }
-        if (other.tag.Equals("Resource_Wood"))
-        {
-            isWoodResourceAvailable = true;
-        }
-        if (other.tag.Equals("Resource_Stone"))
-        {
-            isStoneResourceAvailable = true;
-        }
-        if (other.tag.Equals("Resource_Gold"))
-        {
-            isGoldResourceAvailable = true;
-        }
-
-        if (other.name.Equals("Mill"))
-        {
-            isMillAvailable = true;
-        }
-        if (other.name.Equals("Sawmill"))
-        {
-            isSawmillAvailable = true;
-        }
-        if (other.name.Equals("Mine"))
-        {
-            isMineAvailable = true;
+            perceivedObjects.Add(other.gameObject);
         }
     }
 
     private void OnTriggerExit(Collider other)
     {
-        if (other.tag.Equals("Resource_Food"))
+        if (perceivedObjects.Contains(other.gameObject))
         {
-            isFoodResourceAvailable = false;
-        }
-        if (other.tag.Equals("Resource_Wood"))
-        {
-            isWoodResourceAvailable = false;
-        }
-        if (other.tag.Equals("Resource_Stone"))
-        {
-            isStoneResourceAvailable = false;
-        }
-        if (other.tag.Equals("Resource_Gold"))
-        {
-            isGoldResourceAvailable = false;
-        }
-
-        if (other.name.Equals("Mill"))
-        {
-            isMillAvailable = false;
-        }
-        if (other.name.Equals("Sawmill"))
-        {
-            isSawmillAvailable = false;
-        }
-        if (other.name.Equals("Mine"))
-        {
-            isMineAvailable = false;
+            perceivedObjects.Remove(other.gameObject);
         }
     }
 
@@ -265,13 +230,31 @@ public class Citizen : Unit
 
     public void GatherResource(Resource resource)
     {
+        targetResource = resource;
         stateMaschine.SetState(State_GatherResource.Instance);
+        group = SetWorkerGroup(resource);
+    }
+
+    private WorkerGroup SetWorkerGroup(Resource resource)
+    {
+        switch (resource.resourceType)
+        {
+            case ResourceType.Food: return WorkerGroup.GatherFood;
+            case ResourceType.Wood: return WorkerGroup.GatherWood;
+            case ResourceType.Stone: return WorkerGroup.GatherStone;
+            case ResourceType.Gold: return WorkerGroup.GatherGold;
+        }
+        return WorkerGroup.Other;
     }
 
     public void MoveTo(Vector3 targetLocation)
     {
         group = WorkerGroup.Other;
         navMeshAgent.destination = targetLocation;
-        stateMaschine.SetState(State_Move.Instance);
+    }
+
+    public void Build(Building building, Vector3 position)
+    {
+        //fuck building
     }
 }

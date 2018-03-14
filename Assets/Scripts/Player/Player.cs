@@ -27,6 +27,33 @@ public struct PlayerResource
     public int wood;
     public int stone;
     public int gold;
+
+    /// <summary>
+    /// Add a type of resource to the player resources.
+    /// </summary>
+    /// <param name="amount">The amount that gets stored.</param>
+    /// <param name="resourceType">The type of the resource.</param>
+    public void AddResource(ResourceTransferStruct resourceTransferStruct)
+    {
+        switch(resourceTransferStruct.resourceType)
+        {
+            case ResourceType.Food:
+                food += resourceTransferStruct.resourceAmount;
+                break;
+
+            case ResourceType.Wood:
+                wood += resourceTransferStruct.resourceAmount;
+                break;
+
+            case ResourceType.Stone:
+                stone += resourceTransferStruct.resourceAmount;
+                break;
+
+            case ResourceType.Gold:
+                gold += resourceTransferStruct.resourceAmount;
+                break;
+        }
+    }
 }
 
 public class Player : MonoBehaviour

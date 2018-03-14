@@ -17,17 +17,17 @@ public class State_Idle : State<Citizen>
 
     public override void Enter(Citizen citizen)
     {
-        Debug.Log("Do nothing now");
+        citizen.group = WorkerGroup.Idle;
+        //citizen.navMeshAgent.ResetPath();
     }
 
     public override void Execute(Citizen citizen)
     {
-        //Debug.Log("I lost tick-tack-toe against a chicken ...");
-        
+
     }
 
     public override void Exit(Citizen citizen)
     {
-        Debug.Log("Time to work");
+
     }
 }

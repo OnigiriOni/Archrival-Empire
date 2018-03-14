@@ -18,6 +18,18 @@ public struct ResourceCapacity
     public bool canStoreWood;
     public bool canStoreStone;
     public bool canStoreGold;
+
+    public bool CanStore(ResourceType resourceType)
+    {
+        switch(resourceType)
+        {
+            case ResourceType.Food: return canStoreFood;
+            case ResourceType.Wood: return canStoreWood;
+            case ResourceType.Stone: return canStoreStone;
+            case ResourceType.Gold: return canStoreGold;
+        }
+        return false;
+    }
 }
 
 public class Building : MonoBehaviour
