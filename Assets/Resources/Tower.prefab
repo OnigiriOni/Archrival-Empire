@@ -88,8 +88,8 @@ GameObject:
   m_Component:
   - component: {fileID: 4278468045170908}
   - component: {fileID: 65438805510205702}
-  - component: {fileID: 114324220225188220}
   - component: {fileID: 208882284219745194}
+  - component: {fileID: 114267338867716902}
   m_Layer: 0
   m_Name: Tower
   m_TagString: Untagged
@@ -558,7 +558,7 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 4, y: 12, z: 4}
   m_Center: {x: 0, y: 6, z: 0}
---- !u!114 &114324220225188220
+--- !u!114 &114267338867716902
 MonoBehaviour:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
@@ -569,6 +569,30 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: af988124831bfc241bb44b2afc28909f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  name: Tower
+  health: 150
+  playerTag: 0
+  player: {fileID: 0}
+  buildCost:
+    food: 0
+    wood: 0
+    stone: 150
+    gold: 0
+  buildTime: 10
+  constructionSiteSize: 0
+  resourceCapacity:
+    canStoreFood: 0
+    canStoreWood: 0
+    canStoreStone: 0
+    canStoreGold: 0
+  damage:
+    toCitizen: 80
+    toSoldiers: 49
+    toCavalier: 30
+    toArtillery: 60
+    toBuildings: 0
+  damageCooldown: 0.5
+  damageCooldownLeft: 0
 --- !u!208 &208882284219745194
 NavMeshObstacle:
   m_ObjectHideFlags: 1

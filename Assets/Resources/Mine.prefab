@@ -292,8 +292,8 @@ GameObject:
   m_Component:
   - component: {fileID: 4232709574718910}
   - component: {fileID: 65533496646942050}
-  - component: {fileID: 114917117930491912}
   - component: {fileID: 208695130244919500}
+  - component: {fileID: 114232469111684354}
   m_Layer: 0
   m_Name: Mine
   m_TagString: Untagged
@@ -1350,7 +1350,7 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 4, y: 3, z: 4}
   m_Center: {x: 0, y: 1.5, z: 0}
---- !u!114 &114917117930491912
+--- !u!114 &114232469111684354
 MonoBehaviour:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
@@ -1361,6 +1361,22 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7808d65c292562d459486800a987a3b7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  name: Mine
+  health: 100
+  playerTag: 0
+  player: {fileID: 0}
+  buildCost:
+    food: 0
+    wood: 150
+    stone: 0
+    gold: 0
+  buildTime: 6
+  constructionSiteSize: 0
+  resourceCapacity:
+    canStoreFood: 0
+    canStoreWood: 0
+    canStoreStone: 1
+    canStoreGold: 1
 --- !u!208 &208695130244919500
 NavMeshObstacle:
   m_ObjectHideFlags: 1

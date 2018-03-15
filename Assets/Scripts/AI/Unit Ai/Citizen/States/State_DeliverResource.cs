@@ -22,6 +22,7 @@ public class State_DeliverResource : State<Citizen>
 
         if (building == null)
         {
+            citizen.navMeshAgent.ResetPath();
             citizen.ChangeState(State_Idle.Instance);
         }
         else if (!citizen.perceivedObjects.Contains(building))
@@ -51,6 +52,7 @@ public class State_DeliverResource : State<Citizen>
 
             if (building == null)
             {
+                citizen.navMeshAgent.ResetPath();
                 citizen.ChangeState(State_Idle.Instance);
             }
             else if (!citizen.perceivedObjects.Contains(building))

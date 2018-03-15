@@ -2,112 +2,176 @@
 using System.Collections.Generic;
 using UnityEngine;
 
+public class BuildManager : MonoBehaviour
+{
+    // Holding references of all available building prefabs.
+    public Building capitol;
+    public Building mill;
+    public Building sawmill;
+    public Building mine;
+    public Building barrack;
+    public Building stable;
+    public Building foundry;
+    public Building tower;
+
+    /// <summary>
+    /// Spawn a construction site on the map and all assigned citizen begin to work.
+    /// </summary>
+    /// <param name="building">The building to be build.</param>
+    /// <param name="position">The world position of the build spot.</param>
+    /// <param name="player">The player that owns the building</param>
+    /// <param name="citizen">The assigned citizen.</param>
+    /// <returns>true if the player has enough resources and the construction has started.</returns>
+    public bool Build(Building building, Vector3 position, Player player, Citizen citizen)
+    {
+        // Check if the player has enough resources.
+        if (EnoughResources(player, building))
+        {
+            // Remove the resource cost from the player resources.
+            player.resources.RemoveResources(building.buildCost);
+
+            GameObject construction;
+
+            // Spawen a construction site according to the building size.
+            if (building.constructionSiteSize == ConstructionSiteSize.Size4x4)
+            {
+                construction = (GameObject)Instantiate(Resources.Load("ConstructionSite4x4"), position, Quaternion.identity);
+            }
+            else
+            {
+                construction = (GameObject)Instantiate(Resources.Load("ConstructionSite8x8"), position, Quaternion.identity);
+            }
+
+            // Set the stats of the construction site.
+            ConstructionSite constructionSite = construction.GetComponent<ConstructionSite>();
+
+            constructionSite.buildTimeLeft = building.buildTime;
+            constructionSite.health = building.health / 2;
+            constructionSite.name = building.name + " Construction";
+            constructionSite.building = building.name;
+            constructionSite.player = player;
+            constructionSite.playerTag = player.playerTag;
+            constructionSite.SetPlayerStats();
+
+            // Delegate the responsible citizen to the construction site.
+            citizen.Build(construction);
+            
+            return true;
+        }
+        return false;
+    }
+
+    /// <summary>
+    /// Spawn a construction site on the map and all assigned citizen begin to work.
+    /// </summary>
+    /// <param name="building">The building to be build.</param>
+    /// <param name="position">The world position of the build spot.</param>
+    /// <param name="player">The player that owns the building</param>
+    /// <param name="citizens">The assigned citizen.</param>
+    /// <returns>true if the player has enough resources and the construction has started.</returns>
+    public bool Build(Building building, Vector3 position, Player player, Citizen[] citizens)
+    {
+        // Check if the player has enough resources.
+        if (EnoughResources(player, building))
+        {
+            // Remove the resource cost from the player resources.
+            player.resources.RemoveResources(building.buildCost);
+
+            GameObject construction;
+
+            // Spawen a construction site according to the building size.
+            if (building.constructionSiteSize == ConstructionSiteSize.Size4x4)
+            {
+                construction = (GameObject) Instantiate(Resources.Load("ConstructionSite4x4"), position, Quaternion.identity);
+            }
+            else
+            {
+                construction = (GameObject) Instantiate(Resources.Load("ConstructionSite8x8"), position, Quaternion.identity);
+            }
+
+            // Set the stats of the construction site.
+            ConstructionSite constructionSite = construction.GetComponent<ConstructionSite>();
+
+            constructionSite.buildTimeLeft  = building.buildTime;
+            constructionSite.health         = building.health / 2;
+            constructionSite.name           = building.name + " Construction";
+            constructionSite.building       = building.name;
+            constructionSite.player         = player;
+            constructionSite.playerTag      = player.playerTag;
+            constructionSite.SetPlayerStats();
+
+            // Delegate all responsible citizen to the construction site.
+            foreach (Citizen citizen in citizens)
+            {
+                citizen.Build(construction);
+            }
+
+            return true;
+        }
+        return false;
+    }
+
+    /// <summary>
+    /// Returns if the player has enough resources to build a building.
+    /// </summary>
+    /// <param name="player">The player who wants to build.</param>
+    /// <param name="building">The building that is about to be build.</param>
+    /// <returns>true if the player has enough resources.</returns>
+    private bool EnoughResources(Player player, Building building)
+    {
+        if (
+            player.resources.food >= building.buildCost.food
+            && player.resources.wood >= building.buildCost.wood
+            && player.resources.stone >= building.buildCost.stone
+            && player.resources.gold >= building.buildCost.gold
+            )
+        {
+            return true;
+        }
+        return false;
+    }
 
 
-//public class BuildManager : MonoBehaviour
-//{
-//    public ResourceCost capitolCost;
-//    public ResourceCost millCost;
-//    public ResourceCost sawmillCost;
-//    public ResourceCost mineCost;
-//    public ResourceCost goldmineCost;
-//    public ResourceCost barrackCost;
-//    public ResourceCost stablelCost;
-//    public ResourceCost foundryCost;
-//    public ResourceCost towerCost;
 
 
-//    private void Start()
-//    {
-//        GetBuildCosts();
-//    }
-
-//    /// <summary>
-//    /// Get the build costs to compare them later
-//    /// </summary>
-//    public void GetBuildCosts()
-//    {
-//        capitolCost =   FindObjectOfType<Capitol>().buildCost;
-//        millCost =      FindObjectOfType<Mill>().BuildCost;
-//        sawmillCost =   FindObjectOfType<Sawmill>().buildCost;
-//        mineCost =      FindObjectOfType<Mine>().buildCost;
-//        goldmineCost =  FindObjectOfType<Goldmine>().buildCost;
-//        barrackCost =   FindObjectOfType<Barrack>().buildCost;
-//        foundryCost =   FindObjectOfType<Foundry>().buildCost;
-//        towerCost =     FindObjectOfType<Tower>().buildCost;
-//    }
-
-//    public bool Compare(Resources playerResources, ResourceCost cost)
-//    {
-//        if (playerResources.food >= cost.food
-//            && playerResources.wood >= cost.wood
-//            && playerResources.stone >= cost.stone
-//            && playerResources.gold >= cost.gold)
-//        {
-//            return true;
-//        }
-//        return false;
-//    }
 
 
-//    public void BuildCapitol(Player player, Cell cell)
-//    {
-        
-//    }
+    //TODO: cut out the test scripts.
+    ///////////////////////////////////////////////////////////////
+    // T E S T    S C R I P T S
+    ///////////////////////////////////////////////////////////////
+    private float delay = 2;
+    private int n = 0;
+    private void Update()
+    {
+        delay -= Time.deltaTime;
 
-//    public void BuildMill()
-//    {
-//        Game game = FindObjectOfType<Game>();
-//        //wait as long as FindObjectOfType<Mill>().buildTime   (6 seconds)
-//        new Mill(game.player1, game.map.blue);
-//    }
+        if (delay <= 0 && n == 0)
+        {
+            Player player = FindObjectOfType<Player>();
+            Build(capitol, new Vector3(200, 0, 200), player, FindPlayerCitizen(player));
+            n++;
+            Debug.Log(n + " , " + delay);
+        }
+    }
 
-    //public struct Capitol
-    //{
-    //    public static readonly int Food = 1000;
-    //    public static readonly int Wood = 1000;
-    //    public static readonly int Stone = 1000;
-    //    public static readonly int Gold = 1000;
+    private Citizen[] FindPlayerCitizen(Player player)
+    {
 
-    //    public static bool CanBuild(Resources playerResources)
-    //    {
-    //        if(
-    //            playerResources.food >= Food &&
-    //            playerResources.wood >= Wood &&
-    //            playerResources.stone >= Stone &&
-    //            playerResources.gold >= Gold)
-    //        {
-    //            return true;
-    //        }
-    //        return false;
-    //    }
-    //}
-    //public struct BuildCostMill
-    //{
-    //    public static readonly int Food = 0;
-    //    public static readonly int Wood = 100;
-    //    public static readonly int Stone = 0;
-    //    public static readonly int Gold = 0;
-    //}
-    //public struct BuildCostSawmill
-    //{
-    //    public static readonly int Food = 0;
-    //    public static readonly int Wood = 100;
-    //    public static readonly int Stone = 0;
-    //    public static readonly int Gold = 0;
-    //}
-    //public struct BuildCostMine
-    //{
-    //    public static readonly int Food = 0;
-    //    public static readonly int Wood = 150;
-    //    public static readonly int Stone = 0;
-    //    public static readonly int Gold = 0;
-    //}
-    //public struct BuildCostGoldmine
-    //{
-    //    public static readonly int Food = 0;
-    //    public static readonly int Wood = 150;
-    //    public static readonly int Stone = 0;
-    //    public static readonly int Gold = 0;
-    //}
-//}
+        Citizen[] citizen = FindObjectsOfType<Citizen>();
+        Citizen[] citizen2 = new Citizen[5];
+        int j = 0;
+        for (int i = 0; i < citizen.Length; i++)
+        {
+            if (citizen[i].playerTag == player.playerTag)
+            {
+                citizen2[j] = citizen[i];
+                j++;
+            }
+        }
+
+        Debug.Log(citizen2[4].transform.position);
+
+        return citizen2;
+    }
+}

@@ -35,34 +35,22 @@ public class Unit : MonoBehaviour
     public float damageCooldown;
     public float damageCooldownLeft;
 
+    private void Destruct()
+    {
+        Destroy(gameObject);
+    }
 
+    /// <summary>
+    /// Receive damage. The object health goes down
+    /// </summary>
+    /// <param name="damage">The amount of damage dealt</param>
+    public void TakeDamage(float damage)
+    {
+        health -= damage;
 
-    //    //public void MoveTo(Cell cell)
-    //    //{
-    //    //    if (cell == currentCell) return;
-
-    //    //    currentCell.units2.Remove(this);
-    //    //    //PATHFINDING IS NECESSARY FOR THIS!!!!!!!!!!!
-    //    //    //timer ->
-    //    //     float time;
-    //    //    currentCell.connectedCells.TryGetValue(cell, out time);
-    //    //    //timer <-
-    //    //    cell.units2.Add(this);
-    //    //    currentCell = cell;
-    //    //}
-
-    //    public void Attack() //Soldiers or whatever
-    //    {
-
-    //    }
-
-    //    public void TakeDamage(int damage)
-    //    {
-    //        health -= damage;
-    //        if (health <= 0)
-    //        {
-    //            Die();
-    //        }
-    //    }
-
+        if (health <= 0)
+        {
+            Destruct();
+        }
+    }
 }

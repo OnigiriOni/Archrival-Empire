@@ -166,14 +166,14 @@ public class Citizen : Unit
         stateMaschine.Initialize(this, State_Idle.Instance);
 
         navMeshAgent = GetComponent<NavMeshAgent>();
-        //navMeshAgent.SetDestination(new Vector3(130, 0, 22));
 
         perceivedObjects = new List<GameObject>();
 
 
         // Test functions
-        GatherResource(GameObject.Find("Resource_Food").GetComponent<Resource>());
+        //GatherResource(GameObject.Find("Resource_Food").GetComponent<Resource>());
     }
+
     private void Update()
     {
         stateMaschine.Update();
@@ -209,20 +209,6 @@ public class Citizen : Unit
         }
     }
 
-    /// <summary>
-    /// Receive damage. The object health goes down
-    /// </summary>
-    /// <param name="damage">The amount of damage dealt</param>
-    public void TakeDamage(float damage)
-    {
-        health -= damage;
-
-        if (health <= 0)
-        {
-            Destroy(this);
-        }
-    }
-
     public void ChangeState(State<Citizen> state)
     {
         stateMaschine.SetState(state);
@@ -249,12 +235,14 @@ public class Citizen : Unit
 
     public void MoveTo(Vector3 targetLocation)
     {
+        navMeshAgent.SetDestination(targetLocation);
         group = WorkerGroup.Other;
-        navMeshAgent.destination = targetLocation;
     }
 
-    public void Build(Building building, Vector3 position)
+    public void Build(GameObject building)
     {
-        //fuck building
+        targetGameObject = building;
+        stateMaschine.SetState(State_Build.Instance);
+        group = WorkerGroup.Builder;
     }
 }

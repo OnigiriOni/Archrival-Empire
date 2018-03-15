@@ -122,8 +122,8 @@ GameObject:
   m_Component:
   - component: {fileID: 4992070399702850}
   - component: {fileID: 65017235668774922}
-  - component: {fileID: 114673300816664354}
   - component: {fileID: 208208844483126490}
+  - component: {fileID: 114272936981263456}
   m_Layer: 0
   m_Name: Foundry
   m_TagString: Untagged
@@ -558,7 +558,7 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 8, y: 8, z: 8}
   m_Center: {x: 0, y: 4, z: 0}
---- !u!114 &114673300816664354
+--- !u!114 &114272936981263456
 MonoBehaviour:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
@@ -569,6 +569,22 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: df70172cce6a88042a2ec0a9bc3c5e32, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  name: Foundry
+  health: 150
+  playerTag: 0
+  player: {fileID: 0}
+  buildCost:
+    food: 0
+    wood: 200
+    stone: 50
+    gold: 50
+  buildTime: 10
+  constructionSiteSize: 1
+  resourceCapacity:
+    canStoreFood: 0
+    canStoreWood: 0
+    canStoreStone: 0
+    canStoreGold: 0
 --- !u!208 &208208844483126490
 NavMeshObstacle:
   m_ObjectHideFlags: 1

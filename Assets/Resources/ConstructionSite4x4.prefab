@@ -106,8 +106,9 @@ GameObject:
   - component: {fileID: 4758124979402162}
   - component: {fileID: 208606223416585408}
   - component: {fileID: 65004608285142104}
+  - component: {fileID: 114653341018677058}
   m_Layer: 0
-  m_Name: onstructionSite4x4
+  m_Name: ConstructionSite4x4
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -485,6 +486,23 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 4, y: 1, z: 4}
   m_Center: {x: 0, y: 0.5, z: 0}
+--- !u!114 &114653341018677058
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1900257152042294}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fe4713441d494d640b6aedfe83cc3340, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  name: 
+  health: 0
+  playerTag: 0
+  player: {fileID: 0}
+  building: 
+  buildTimeLeft: 1
 --- !u!208 &208606223416585408
 NavMeshObstacle:
   m_ObjectHideFlags: 1

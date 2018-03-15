@@ -52,6 +52,7 @@ public class State_GatherResource : State<Citizen>
         // May cause failures if the destroyed object is not null.
         if (citizen.targetResource == null)
         {
+            citizen.navMeshAgent.ResetPath();
             citizen.ChangeState(State_Idle.Instance);
         }
 

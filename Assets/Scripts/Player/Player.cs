@@ -54,6 +54,18 @@ public struct PlayerResource
                 break;
         }
     }
+
+    /// <summary>
+    /// Removes the amount of the building/unit costs from the player resources.
+    /// </summary>
+    /// <param name="buildCost">The build costs of the building/unit</param>
+    public void RemoveResources(BuildCost buildCost)
+    {
+        food -= buildCost.food;
+        wood -= buildCost.wood;
+        stone -= buildCost.stone;
+        gold -= buildCost.gold;
+    }
 }
 
 public class Player : MonoBehaviour

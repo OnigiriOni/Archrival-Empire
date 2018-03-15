@@ -72,7 +72,7 @@ GameObject:
   - component: {fileID: 4597647332000190}
   - component: {fileID: 65493287389772226}
   - component: {fileID: 208662798508996944}
-  - component: {fileID: 114474084470406230}
+  - component: {fileID: 114956382066805768}
   m_Layer: 0
   m_Name: Mill
   m_TagString: Untagged
@@ -1350,7 +1350,7 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 4, y: 5, z: 4}
   m_Center: {x: 0, y: 2.5, z: 0}
---- !u!114 &114474084470406230
+--- !u!114 &114956382066805768
 MonoBehaviour:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
@@ -1358,7 +1358,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 1135175616742888}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 35620b0178c349344bb0d422914bdc86, type: 3}
+  m_Script: {fileID: 11500000, guid: be30d81d501da6040aaa74b420f04bb7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   name: Mill
@@ -1371,6 +1371,7 @@ MonoBehaviour:
     stone: 0
     gold: 0
   buildTime: 6
+  constructionSiteSize: 0
   resourceCapacity:
     canStoreFood: 1
     canStoreWood: 0

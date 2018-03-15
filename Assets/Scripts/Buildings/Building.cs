@@ -2,6 +2,12 @@
 using System.Collections.Generic;
 using UnityEngine;
 
+public enum ConstructionSiteSize
+{
+    Size4x4,
+    Size8x8
+}
+
 [System.Serializable]
 public struct BuildCost
 {
@@ -45,6 +51,7 @@ public class Building : MonoBehaviour
 
     // Build time in seconds
     public float buildTime;
+    public ConstructionSiteSize constructionSiteSize;
 
     [Header("Resource Options")]
     public ResourceCapacity resourceCapacity;
@@ -62,6 +69,19 @@ public class Building : MonoBehaviour
         
     }
 
+    public void SetPlayerStats()
+    {
+        // Set the color of the building to the player color (Takes only the first Children and its first Material).
+        GetComponentInChildren<MeshRenderer>().material.color = player.playerColor;
+        // Set the PlayerTag to the players PlayerTag.
+        playerTag = player.playerTag;
+    }
+
+    private void Destruct()
+    {
+        Destroy(gameObject);
+    }
+
     /// <summary>
     /// Receive damage. The object health goes down.
     /// </summary>
@@ -72,8 +92,7 @@ public class Building : MonoBehaviour
 
         if (health <= 0)
         {
-            Destroy(this);
+            Destruct();
         }
     }
-
 }

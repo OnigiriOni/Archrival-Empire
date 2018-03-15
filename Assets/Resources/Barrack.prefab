@@ -20,8 +20,8 @@ GameObject:
   m_Component:
   - component: {fileID: 4953794118507594}
   - component: {fileID: 65708817242919954}
-  - component: {fileID: 114021810399159848}
   - component: {fileID: 208697464811129048}
+  - component: {fileID: 114627436867832822}
   m_Layer: 0
   m_Name: Barrack
   m_TagString: Untagged
@@ -276,7 +276,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1191290738882608}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 35.58, y: 0, z: 32.97}
+  m_LocalPosition: {x: -12.869999, y: 0, z: 6.7300014}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 4906080532611344}
@@ -630,7 +630,7 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 8, y: 4.5, z: 8}
   m_Center: {x: 0, y: 2.25, z: 0}
---- !u!114 &114021810399159848
+--- !u!114 &114627436867832822
 MonoBehaviour:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
@@ -641,6 +641,22 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2ab7aef2b9da73f4c8ed202caf740043, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  name: Barrack
+  health: 150
+  playerTag: 0
+  player: {fileID: 0}
+  buildCost:
+    food: 0
+    wood: 100
+    stone: 50
+    gold: 0
+  buildTime: 10
+  constructionSiteSize: 1
+  resourceCapacity:
+    canStoreFood: 0
+    canStoreWood: 0
+    canStoreStone: 0
+    canStoreGold: 0
 --- !u!208 &208697464811129048
 NavMeshObstacle:
   m_ObjectHideFlags: 1

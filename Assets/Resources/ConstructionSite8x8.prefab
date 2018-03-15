@@ -55,6 +55,7 @@ GameObject:
   - component: {fileID: 4605261185528272}
   - component: {fileID: 208100839559031626}
   - component: {fileID: 65632307710665142}
+  - component: {fileID: 114489367966384478}
   m_Layer: 0
   m_Name: ConstructionSite8x8
   m_TagString: Untagged
@@ -773,6 +774,23 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 8, y: 1, z: 8}
   m_Center: {x: 0, y: 0.5, z: 0}
+--- !u!114 &114489367966384478
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1519235495150764}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fe4713441d494d640b6aedfe83cc3340, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  name: 
+  health: 0
+  playerTag: 0
+  player: {fileID: 0}
+  building: 
+  buildTimeLeft: 1
 --- !u!208 &208100839559031626
 NavMeshObstacle:
   m_ObjectHideFlags: 1
