@@ -311,6 +311,7 @@ MonoBehaviour:
     stone: 0
     gold: 0
   buildTime: 3
+  buildTimeLeft: 0
   damage:
     toCitizen: 10
     toSoldiers: 5
@@ -326,13 +327,6 @@ MonoBehaviour:
   targetResource: {fileID: 0}
   targetGameObject: {fileID: 0}
   perceivedObjects: []
-  isFoodResourceAvailable: 0
-  isWoodResourceAvailable: 0
-  isStoneResourceAvailable: 0
-  isGoldResourceAvailable: 0
-  isMillAvailable: 0
-  isSawmillAvailable: 0
-  isMineAvailable: 0
 --- !u!135 &135930490656105554
 SphereCollider:
   m_ObjectHideFlags: 1

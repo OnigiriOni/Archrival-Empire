@@ -38,6 +38,101 @@ public struct ResourceCapacity
     }
 }
 
+public class ProductionPipe : MonoBehaviour
+{
+    // A object that hold the build time left for each unit in production.
+    private class BuildTime
+    {
+        public Unit unit;
+        public float buildTimeLeft;
+
+        public BuildTime(Unit unit, float buildTime)
+        {
+            this.unit = unit;
+            buildTimeLeft = buildTime;
+        }
+    }
+
+    private Building building;
+    private List<BuildTime> productionPipe = new List<BuildTime>();
+
+    public ProductionPipe(Building building)
+    {
+        this.building = building;
+    }
+
+    /// <summary>
+    /// Adds a unit to the production pipe using the BuildTime class.
+    /// </summary>
+    /// <param name="unit">The unit object that has to be cloned.</param>
+    public void AddUnit(Unit unit)
+    {
+        productionPipe.Add(new BuildTime(unit, unit.buildTime));
+    }
+
+    /// <summary>
+    /// Updates the build time left for each unit in the production pipe per frame.
+    /// </summary>
+    public void UpdatePipe()
+    {
+        if (productionPipe.Count >= 1)
+        {
+            //FIXME: An enum error occurs because of the remove call, but it has no negative impact. 
+            foreach (BuildTime time in productionPipe)
+            {
+                time.buildTimeLeft -= Time.deltaTime;
+
+                if (time.buildTimeLeft <= 0)
+                {
+                    SpawnUnit(time.unit);
+                    productionPipe.Remove(time);
+                }
+            }
+        }
+    }
+
+    /// <summary>
+    /// Spawns an instance of the unit.
+    /// </summary>
+    /// <param name="unit">The unit object that has to be cloned.</param>
+    private void SpawnUnit(Unit unit)
+    {
+        // Set the spawn postion (in front of the entrance)
+        Vector3 spawnPosition = building.transform.position;
+        spawnPosition.x += 8F;
+
+        // Spawn the citizen.
+        GameObject gameObject = (GameObject)Instantiate(Resources.Load(unit.name), spawnPosition, Quaternion.identity);
+
+        // Set the stats of the citizen.
+        Unit newUnit = gameObject.GetComponent<Unit>();
+
+        newUnit.player = building.player;
+        newUnit.playerTag = building.player.playerTag;
+        newUnit.SetPlayerStats();
+    }
+
+    /// <summary>
+    /// Returns if the player has enough resources to build a unit.
+    /// </summary>
+    /// <param name="player">The player who wants to build.</param>
+    /// <param name="building">The unit that is about to be trained.</param>
+    /// <returns>true if the player has enough resources.</returns>
+    public bool EnoughResources(Unit unit)
+    {
+        if (
+            building.player.resources.food >= unit.buildCost.food
+            && building.player.resources.wood >= unit.buildCost.wood
+            && building.player.resources.stone >= unit.buildCost.stone
+            && building.player.resources.gold >= unit.buildCost.gold
+            )
+        {
+            return true;
+        }
+        return false;
+    }
+}
+
 public class Building : MonoBehaviour
 {
     [Header("Building Options")]
@@ -58,10 +153,7 @@ public class Building : MonoBehaviour
 
     private void Start()
     {
-        // Set the color of the building to the player color (Takes only the first Children and its first Material).
-        GetComponentInChildren<MeshRenderer>().material.color = player.playerColor;
-        // Set the PlayerTag to the players PlayerTag.
-        playerTag = player.playerTag;
+        SetPlayerStats();
     }
 
     private void Update()

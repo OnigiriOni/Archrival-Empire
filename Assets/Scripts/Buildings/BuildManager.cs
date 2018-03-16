@@ -142,6 +142,7 @@ public class BuildManager : MonoBehaviour
     ///////////////////////////////////////////////////////////////
     private float delay = 2;
     private int n = 0;
+
     private void Update()
     {
         delay -= Time.deltaTime;
@@ -151,7 +152,6 @@ public class BuildManager : MonoBehaviour
             Player player = FindObjectOfType<Player>();
             Build(capitol, new Vector3(200, 0, 200), player, FindPlayerCitizen(player));
             n++;
-            Debug.Log(n + " , " + delay);
         }
     }
 
@@ -169,8 +169,6 @@ public class BuildManager : MonoBehaviour
                 j++;
             }
         }
-
-        Debug.Log(citizen2[4].transform.position);
 
         return citizen2;
     }

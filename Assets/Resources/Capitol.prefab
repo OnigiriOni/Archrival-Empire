@@ -873,6 +873,7 @@ MonoBehaviour:
     canStoreWood: 1
     canStoreStone: 1
     canStoreGold: 1
+  citizen: {fileID: 114923208338877644, guid: c96eb8ec0da23ac43976f448e34bfd2d, type: 2}
 --- !u!208 &208697521543911948
 NavMeshObstacle:
   m_ObjectHideFlags: 1

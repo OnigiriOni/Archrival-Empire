@@ -68,6 +68,8 @@ GameObject:
   serializedVersion: 5
   m_Component:
   - component: {fileID: 4713709245767532}
+  - component: {fileID: 195135157542897256}
+  - component: {fileID: 114592784667826252}
   m_Layer: 0
   m_Name: Artillery
   m_TagString: Untagged
@@ -201,7 +203,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1537255003229012}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 7.51, y: 0, z: 8.78}
+  m_LocalPosition: {x: -12.379999, y: 0, z: -1.2799997}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 4589500080300146}
@@ -428,3 +430,55 @@ MeshFilter:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1752408423367718}
   m_Mesh: {fileID: 10206, guid: 0000000000000000e000000000000000, type: 0}
+--- !u!114 &114592784667826252
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1537255003229012}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b9fe08a1322556a4699a8ba95905b3e1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  name: Artillery
+  health: 100
+  playerTag: 0
+  player: {fileID: 0}
+  navMeshAgent: {fileID: 0}
+  buildCost:
+    food: 0
+    wood: 100
+    stone: 0
+    gold: 100
+  buildTime: 15
+  buildTimeLeft: 0
+  damage:
+    toCitizen: 100
+    toSoldiers: 99
+    toCavalier: 40
+    toArtillery: 99
+    toBuildings: 30
+  damageCooldown: 1
+  damageCooldownLeft: 0
+--- !u!195 &195135157542897256
+NavMeshAgent:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1537255003229012}
+  m_Enabled: 1
+  m_AgentTypeID: -1372625422
+  m_Radius: 1
+  m_Speed: 3
+  m_Acceleration: 8
+  avoidancePriority: 50
+  m_AngularSpeed: 120
+  m_StoppingDistance: 0
+  m_AutoTraverseOffMeshLink: 1
+  m_AutoBraking: 1
+  m_AutoRepath: 1
+  m_Height: 2
+  m_BaseOffset: 0
+  m_WalkableMask: 4294967295
+  m_ObstacleAvoidanceType: 4

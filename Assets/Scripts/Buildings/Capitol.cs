@@ -4,20 +4,34 @@ using UnityEngine;
 
 public class Capitol : Building
 {
+    [Header("Capitol Options")]
+    public Unit citizen;
+
+    private ProductionPipe productionPipe;
+
+    private void Start()
+    {
+        productionPipe = new ProductionPipe(this);
+    }
+
+    private void Update()
+    {
+        productionPipe.UpdatePipe();
+    }
+
     /// <summary>
-    /// Spawn a Citizen Prefab
+    /// Trains a citizen and spawns it in front of the building (using ProductionPipe class).
     /// </summary>
     public void TrainCitizen()
     {
-        //TODO: Citizen cost resources, but it is not considered
-        // Set the spawn postion (in front of the entrance)
-        Vector3 spawnPosition = transform.position;
-        spawnPosition.x += 5.5F;
+        // Check if the player has enough resources.
+        if (productionPipe.EnoughResources(citizen))
+        {
+            // Remove the resource cost from the player resources.
+            player.resources.RemoveResources(citizen.buildCost);
 
-        // Loads the Prefab from the "Resources" folderw
-        GameObject citizen = (GameObject) Instantiate(Resources.Load("Citizen"), spawnPosition, transform.rotation);
-
-        // Takes only the first Children and its first Material
-        citizen.GetComponentInChildren<MeshRenderer>().material.color = Color.blue; //new Color(0, 116, 255, 255); //TODO: MAKE THIS THE PLAYER COLOR
+            // Add the citizen to the production pipeline.
+            productionPipe.AddUnit(citizen);
+        }
     }
 }

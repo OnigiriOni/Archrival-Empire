@@ -657,6 +657,7 @@ MonoBehaviour:
     canStoreWood: 0
     canStoreStone: 0
     canStoreGold: 0
+  soldier: {fileID: 114861521345219748, guid: 6aff8509a564a3e4abe5e39a6ca1278c, type: 2}
 --- !u!208 &208697464811129048
 NavMeshObstacle:
   m_ObjectHideFlags: 1
