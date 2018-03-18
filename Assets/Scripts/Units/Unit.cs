@@ -4,22 +4,61 @@ using UnityEngine;
 using UnityEngine.AI;
 
 [System.Serializable]
-public struct Damage
+public struct CombatOffense
 {
-    public float toCitizen;
-    public float toSoldiers;
-    public float toCavalier;
-    public float toArtillery;
-    public float toBuildings;
+    public float normalDamage;
+    public float pierceDamage;
+    public float siegeDamage;
+
+    [Space(10)]
+    public float attackRange;
+
+    // Cooldown in seconds
+    public float damageCooldown;
+    [System.NonSerialized]
+    public float damageCooldownLeft;
+
+    /// <summary>
+    /// Calculate the cooldwon time for the next attack.
+    /// </summary>
+    public void CalculateDamageCooldown()
+    {
+        damageCooldownLeft -= Time.deltaTime;
+
+        if (damageCooldownLeft < 0)
+        {
+            damageCooldownLeft = 0;
+        }
+    }
+}
+
+[System.Serializable]
+public struct CombatDefense
+{
+    public float health;
+
+    [Space(10)]
+    // Armor in percent
+    public float mormalArmor;
+    public float pierceArmor;
+    public float siegeArmor;
+}
+
+public struct DamageStruct
+{
+    public float normalDamage;
+    public float pierceDamage;
+    public float siegeDamage;
 }
 
 public class Unit : MonoBehaviour
 {
     [Header("Unit Options")]
     public new string name;
-    public float health;
     public PlayerTag playerTag;
     public Player player;
+
+    [System.NonSerialized]
     public NavMeshAgent navMeshAgent;
 
     [Header("Build Options")]
@@ -30,11 +69,8 @@ public class Unit : MonoBehaviour
     public float buildTimeLeft;
 
     [Header("Combat Options")]
-    public Damage damage;
-
-    // Cooldown in seconds
-    public float damageCooldown;
-    public float damageCooldownLeft;
+    public CombatDefense combatDefense;
+    public CombatOffense combatOffense;
 
     public void SetPlayerStats()
     {
@@ -52,12 +88,18 @@ public class Unit : MonoBehaviour
     /// <summary>
     /// Receive damage. The object health goes down
     /// </summary>
-    /// <param name="damage">The amount of damage dealt</param>
-    public void TakeDamage(float damage)
+    /// <param name="damage">The amount and type of damage dealt</param>
+    public void TakeDamage(DamageStruct damage)
     {
-        health -= damage;
+        // The damage that is inflicted to the object.
+        float damageValue = (Mathf.Clamp(damage.normalDamage - combatDefense.mormalArmor, 0, damage.normalDamage)) +
+                            (Mathf.Clamp(damage.pierceDamage - combatDefense.pierceArmor, 0, damage.pierceDamage)) +
+                            (Mathf.Clamp(damage.siegeDamage - combatDefense.siegeArmor, 0, damage.siegeDamage));
 
-        if (health <= 0)
+        // Deal the damage and destory the object if health is zero.
+        combatDefense.health -= damageValue;
+
+        if (combatDefense.health <= 0)
         {
             Destruct();
         }

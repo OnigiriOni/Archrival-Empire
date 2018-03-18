@@ -12,6 +12,8 @@ public class Capitol : Building
     private void Start()
     {
         productionPipe = new ProductionPipe(this);
+
+        SetPlayerStats();
     }
 
     private void Update()

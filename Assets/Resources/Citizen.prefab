@@ -38,9 +38,9 @@ GameObject:
   m_Component:
   - component: {fileID: 4764821376104804}
   - component: {fileID: 195235461684171572}
+  - component: {fileID: 54602395630730592}
   - component: {fileID: 135930490656105554}
   - component: {fileID: 114923208338877644}
-  - component: {fileID: 54602395630730592}
   m_Layer: 0
   m_Name: Citizen
   m_TagString: Untagged
@@ -301,10 +301,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   name: Citizen
-  health: 100
   playerTag: 0
   player: {fileID: 0}
-  navMeshAgent: {fileID: 0}
   buildCost:
     food: 50
     wood: 0
@@ -312,21 +310,20 @@ MonoBehaviour:
     gold: 0
   buildTime: 3
   buildTimeLeft: 0
-  damage:
-    toCitizen: 10
-    toSoldiers: 5
-    toCavalier: 4
-    toArtillery: 6
-    toBuildings: 1
-  damageCooldown: 0.5
-  damageCooldownLeft: 0
+  combatDefense:
+    health: 100
+    mormalArmor: 0
+    pierceArmor: 0
+    siegeArmor: 0
+  combatOffense:
+    normalDamage: 20
+    pierceDamage: 0
+    siegeDamage: 0
+    attackRange: 1.5
+    damageCooldown: 1
   group: 0
   resourceCollectionPerTick: 1
   resourceCollectionCooldown: 1
-  resourceCollectionCooldownLeft: 0
-  targetResource: {fileID: 0}
-  targetGameObject: {fileID: 0}
-  perceivedObjects: []
 --- !u!135 &135930490656105554
 SphereCollider:
   m_ObjectHideFlags: 1

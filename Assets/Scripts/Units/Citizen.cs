@@ -73,36 +73,23 @@ public class Backpack
     /// <param name="resourceType">The type of the resource, decides if the backpack gets cleared.</param>
     public void AddResource(int amount, ResourceType resourceType)
     {
-        if (this.resourceType == resourceType)
-        {
-            // Fill the backpack with the amount of resource, if there is space left.
-            int freeSpace = GetFreeSpace();
-
-            if (freeSpace < amount)
-            {
-                currentAmount += freeSpace;
-            }
-            else
-            {
-                currentAmount += amount;
-            }
-        }
-        else
+        if (this.resourceType != resourceType)
         {
             // Discard the backpack for the new resource. Note that current resources are lost.
             currentAmount = 0;
             this.resourceType = resourceType;
+        }
 
-            int freeSpace = GetFreeSpace();
+        // Fill the backpack with the amount of resource, if there is space left.
+        int freeSpace = GetFreeSpace();
 
-            if (freeSpace < amount)
-            {
-                currentAmount += freeSpace;
-            }
-            else
-            {
-                currentAmount += amount;
-            }
+        if (freeSpace < amount)
+        {
+            currentAmount += freeSpace;
+        }
+        else
+        {
+            currentAmount += amount;
         }
     }
 
@@ -141,16 +128,20 @@ public class Citizen : Unit
 
     // Resource collection in seconds.
     public float resourceCollectionCooldown = 1F;
+    [System.NonSerialized]
     public float resourceCollectionCooldownLeft = 0F;
 
     private StateMaschine<Citizen> stateMaschine;
 
+    [System.NonSerialized]
     // The target resource is accessed in the State_GatherResource.
     public Resource targetResource;
 
-    // The target gameobject is sccessed is the State_Move.
+    [System.NonSerialized]
+    // The target gameobject is accessed is the State_Move.
     public GameObject targetGameObject;
 
+    [System.NonSerialized]
     // The perceived objects are used for state checks.
     public List<GameObject> perceivedObjects;
 
@@ -180,15 +171,15 @@ public class Citizen : Unit
 
         // Update the cooldowns
         resourceCollectionCooldownLeft -= Time.deltaTime;
-        damageCooldownLeft -= Time.deltaTime;
+        combatOffense.damageCooldownLeft -= Time.deltaTime;
 
         if (resourceCollectionCooldownLeft < 0)
         {
             resourceCollectionCooldownLeft = 0;
         }
-        if (damageCooldownLeft < 0)
+        if (combatOffense.damageCooldownLeft < 0)
         {
-            damageCooldownLeft = 0;
+            combatOffense.damageCooldownLeft = 0;
         }
     }
 

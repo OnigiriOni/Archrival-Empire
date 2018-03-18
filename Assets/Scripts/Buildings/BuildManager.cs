@@ -46,7 +46,7 @@ public class BuildManager : MonoBehaviour
             ConstructionSite constructionSite = construction.GetComponent<ConstructionSite>();
 
             constructionSite.buildTimeLeft = building.buildTime;
-            constructionSite.health = building.health / 2;
+            constructionSite.health = building.combatDefense.health / 2;
             constructionSite.name = building.name + " Construction";
             constructionSite.building = building.name;
             constructionSite.player = player;
@@ -93,7 +93,7 @@ public class BuildManager : MonoBehaviour
             ConstructionSite constructionSite = construction.GetComponent<ConstructionSite>();
 
             constructionSite.buildTimeLeft  = building.buildTime;
-            constructionSite.health         = building.health / 2;
+            constructionSite.health         = building.combatDefense.health / 2;
             constructionSite.name           = building.name + " Construction";
             constructionSite.building       = building.name;
             constructionSite.player         = player;
@@ -150,7 +150,7 @@ public class BuildManager : MonoBehaviour
         if (delay <= 0 && n == 0)
         {
             Player player = FindObjectOfType<Player>();
-            Build(capitol, new Vector3(200, 0, 200), player, FindPlayerCitizen(player));
+            Build(tower, new Vector3(33, 0, 35), player, FindPlayerCitizen(player));
             n++;
         }
     }

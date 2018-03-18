@@ -137,7 +137,6 @@ public class Building : MonoBehaviour
 {
     [Header("Building Options")]
     public new string name;
-    public float health;
     public PlayerTag playerTag;
     public Player player;
 
@@ -151,6 +150,9 @@ public class Building : MonoBehaviour
     [Header("Resource Options")]
     public ResourceCapacity resourceCapacity;
 
+    [Header("Combat Options")]
+    public CombatDefense combatDefense;
+
     private void Start()
     {
         SetPlayerStats();
@@ -158,7 +160,7 @@ public class Building : MonoBehaviour
 
     private void Update()
     {
-        
+
     }
 
     public void SetPlayerStats()
@@ -178,11 +180,17 @@ public class Building : MonoBehaviour
     /// Receive damage. The object health goes down.
     /// </summary>
     /// <param name="damage">The amount of damage dealt</param>
-    public void TakeDamage(float damage)
+    public void TakeDamage(DamageStruct damage)
     {
-        health -= damage;
+        // The damage that is inflicted to the object.
+        float damageValue = (damage.normalDamage * (combatDefense.mormalArmor / 100)) +
+                            (damage.pierceDamage * (combatDefense.pierceArmor / 100)) +
+                            (damage.siegeDamage * (combatDefense.siegeArmor / 100 ));
 
-        if (health <= 0)
+        // Deal the damage and destory the object if health is zero.
+        combatDefense.health -= damageValue;
+
+        if (combatDefense.health <= 0)
         {
             Destruct();
         }
