@@ -442,10 +442,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   name: Artillery
-  health: 100
   playerTag: 0
   player: {fileID: 0}
-  navMeshAgent: {fileID: 0}
   buildCost:
     food: 0
     wood: 100
@@ -453,14 +451,17 @@ MonoBehaviour:
     gold: 100
   buildTime: 15
   buildTimeLeft: 0
-  damage:
-    toCitizen: 100
-    toSoldiers: 99
-    toCavalier: 40
-    toArtillery: 99
-    toBuildings: 30
-  damageCooldown: 1
-  damageCooldownLeft: 0
+  combatDefense:
+    health: 100
+    mormalArmor: 75
+    pierceArmor: 10
+    siegeArmor: 70
+  combatOffense:
+    normalDamage: 0
+    pierceDamage: 0
+    siegeDamage: 100
+    attackRange: 25
+    damageCooldown: 0
 --- !u!195 &195135157542897256
 NavMeshAgent:
   m_ObjectHideFlags: 1

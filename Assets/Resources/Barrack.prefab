@@ -642,7 +642,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   name: Barrack
-  health: 150
   playerTag: 0
   player: {fileID: 0}
   buildCost:
@@ -657,6 +656,11 @@ MonoBehaviour:
     canStoreWood: 0
     canStoreStone: 0
     canStoreGold: 0
+  combatDefense:
+    health: 150
+    mormalArmor: 70
+    pierceArmor: 70
+    siegeArmor: 20
   soldier: {fileID: 114861521345219748, guid: 6aff8509a564a3e4abe5e39a6ca1278c, type: 2}
 --- !u!208 &208697464811129048
 NavMeshObstacle:

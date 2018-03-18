@@ -150,7 +150,7 @@ public class BuildManager : MonoBehaviour
         if (delay <= 0 && n == 0)
         {
             Player player = FindObjectOfType<Player>();
-            Build(tower, new Vector3(33, 0, 35), player, FindPlayerCitizen(player));
+            Build(sawmill, new Vector3(200, 0, 200), player, FindPlayerCitizen(player));
             n++;
         }
     }

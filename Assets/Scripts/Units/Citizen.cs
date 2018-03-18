@@ -154,7 +154,7 @@ public class Citizen : Unit
         playerTag = player.playerTag;
 
         stateMaschine = new StateMaschine<Citizen>();
-        stateMaschine.Initialize(this, State_Idle.Instance);
+        stateMaschine.Initialize(this, CitizenState_Idle.Instance);
 
         navMeshAgent = GetComponent<NavMeshAgent>();
 
@@ -208,7 +208,7 @@ public class Citizen : Unit
     public void GatherResource(Resource resource)
     {
         targetResource = resource;
-        stateMaschine.SetState(State_GatherResource.Instance);
+        stateMaschine.SetState(CitizenState_GatherResource.Instance);
         group = SetWorkerGroup(resource);
     }
 
@@ -233,7 +233,7 @@ public class Citizen : Unit
     public void Build(GameObject building)
     {
         targetGameObject = building;
-        stateMaschine.SetState(State_Build.Instance);
+        stateMaschine.SetState(CitizenState_Build.Instance);
         group = WorkerGroup.Builder;
     }
 }

@@ -92,9 +92,9 @@ public class Unit : MonoBehaviour
     public void TakeDamage(DamageStruct damage)
     {
         // The damage that is inflicted to the object.
-        float damageValue = (Mathf.Clamp(damage.normalDamage - combatDefense.mormalArmor, 0, damage.normalDamage)) +
-                            (Mathf.Clamp(damage.pierceDamage - combatDefense.pierceArmor, 0, damage.pierceDamage)) +
-                            (Mathf.Clamp(damage.siegeDamage - combatDefense.siegeArmor, 0, damage.siegeDamage));
+        float damageValue = (damage.normalDamage - (damage.normalDamage * combatDefense.mormalArmor / 100))
+                            + (damage.pierceDamage - (damage.pierceDamage * combatDefense.pierceArmor / 100))
+                            + (damage.siegeDamage - (damage.siegeDamage * combatDefense.siegeArmor / 100));
 
         // Deal the damage and destory the object if health is zero.
         combatDefense.health -= damageValue;

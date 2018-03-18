@@ -2,14 +2,14 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class State_Idle : State<Citizen>
+public class CitizenState_Idle : State<Citizen>
 {
-    static readonly State_Idle instance = new State_Idle();
+    static readonly CitizenState_Idle instance = new CitizenState_Idle();
 
-    static State_Idle() { }
-    public State_Idle() { }
+    static CitizenState_Idle() { }
+    public CitizenState_Idle() { }
 
-    public static State_Idle Instance
+    public static CitizenState_Idle Instance
     {
         get { return instance; }
     }

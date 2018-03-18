@@ -2,14 +2,14 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class State_GatherResource : State<Citizen>
+public class CitizenState_GatherResource : State<Citizen>
 {
-    static readonly State_GatherResource instance = new State_GatherResource();
+    static readonly CitizenState_GatherResource instance = new CitizenState_GatherResource();
 
-    static State_GatherResource() { }
-    public State_GatherResource() { }
+    static CitizenState_GatherResource() { }
+    public CitizenState_GatherResource() { }
 
-    public static State_GatherResource Instance
+    public static CitizenState_GatherResource Instance
     {
         get { return instance; }
     }
@@ -23,7 +23,7 @@ public class State_GatherResource : State<Citizen>
             if (citizen.backpack.IsFull())
             {
                 // Bring the resource to the nearest store.
-                citizen.ChangeState(State_DeliverResource.Instance);
+                citizen.ChangeState(CitizenState_DeliverResource.Instance);
             }
         }
 
@@ -45,7 +45,7 @@ public class State_GatherResource : State<Citizen>
         if (citizen.backpack.IsFull())
         {
             // Bring the resource to the nearest store.
-            citizen.ChangeState(State_DeliverResource.Instance);
+            citizen.ChangeState(CitizenState_DeliverResource.Instance);
         }
 
         // Check if the resource disappeared because there are no resources in the object anymore!
@@ -53,7 +53,7 @@ public class State_GatherResource : State<Citizen>
         if (citizen.targetResource == null)
         {
             citizen.navMeshAgent.ResetPath();
-            citizen.ChangeState(State_Idle.Instance);
+            citizen.ChangeState(CitizenState_Idle.Instance);
         }
 
         ///////////////////////////////////////

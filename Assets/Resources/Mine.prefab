@@ -1362,7 +1362,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   name: Mine
-  health: 100
   playerTag: 0
   player: {fileID: 0}
   buildCost:
@@ -1377,6 +1376,11 @@ MonoBehaviour:
     canStoreWood: 0
     canStoreStone: 1
     canStoreGold: 1
+  combatDefense:
+    health: 100
+    mormalArmor: 70
+    pierceArmor: 70
+    siegeArmor: 0
 --- !u!208 &208695130244919500
 NavMeshObstacle:
   m_ObjectHideFlags: 1

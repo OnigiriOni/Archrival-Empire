@@ -2,14 +2,14 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class State_DeliverResource : State<Citizen>
+public class CitizenState_DeliverResource : State<Citizen>
 {
-    static readonly State_DeliverResource instance = new State_DeliverResource();
+    static readonly CitizenState_DeliverResource instance = new CitizenState_DeliverResource();
 
-    static State_DeliverResource() { }
-    public State_DeliverResource() { }
+    static CitizenState_DeliverResource() { }
+    public CitizenState_DeliverResource() { }
 
-    public static State_DeliverResource Instance
+    public static CitizenState_DeliverResource Instance
     {
         get { return instance; }
     }
@@ -23,7 +23,7 @@ public class State_DeliverResource : State<Citizen>
         if (building == null)
         {
             citizen.navMeshAgent.ResetPath();
-            citizen.ChangeState(State_Idle.Instance);
+            citizen.ChangeState(CitizenState_Idle.Instance);
         }
         else if (!citizen.perceivedObjects.Contains(building))
         {
@@ -41,7 +41,7 @@ public class State_DeliverResource : State<Citizen>
         // Return to gathering the resource if the backpack is empty
         if (citizen.backpack.currentAmount == 0)
         {
-            citizen.ChangeState(State_GatherResource.Instance);
+            citizen.ChangeState(CitizenState_GatherResource.Instance);
         }
 
         // Check if the building disappeared because the enemy shot it down!
@@ -53,7 +53,7 @@ public class State_DeliverResource : State<Citizen>
             if (building == null)
             {
                 citizen.navMeshAgent.ResetPath();
-                citizen.ChangeState(State_Idle.Instance);
+                citizen.ChangeState(CitizenState_Idle.Instance);
             }
             else if (!citizen.perceivedObjects.Contains(building))
             {

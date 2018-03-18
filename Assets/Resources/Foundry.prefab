@@ -570,7 +570,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   name: Foundry
-  health: 150
   playerTag: 0
   player: {fileID: 0}
   buildCost:
@@ -585,6 +584,11 @@ MonoBehaviour:
     canStoreWood: 0
     canStoreStone: 0
     canStoreGold: 0
+  combatDefense:
+    health: 150
+    mormalArmor: 70
+    pierceArmor: 70
+    siegeArmor: 20
   artillery: {fileID: 114592784667826252, guid: 359fc094ebdf85a49b5304749cd37c7e,
     type: 2}
 --- !u!208 &208208844483126490

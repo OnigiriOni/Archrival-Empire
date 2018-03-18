@@ -1578,7 +1578,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   name: Sawmill
-  health: 100
   playerTag: 0
   player: {fileID: 0}
   buildCost:
@@ -1593,6 +1592,11 @@ MonoBehaviour:
     canStoreWood: 1
     canStoreStone: 0
     canStoreGold: 0
+  combatDefense:
+    health: 100
+    mormalArmor: 70
+    pierceArmor: 70
+    siegeArmor: 0
 --- !u!208 &208271972184199214
 NavMeshObstacle:
   m_ObjectHideFlags: 1

@@ -2,14 +2,14 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class State_Build : State<Citizen>
+public class CitizenState_Build : State<Citizen>
 {
-    static readonly State_Build instance = new State_Build();
+    static readonly CitizenState_Build instance = new CitizenState_Build();
 
-    static State_Build() { }
-    public State_Build() { }
+    static CitizenState_Build() { }
+    public CitizenState_Build() { }
 
-    public static State_Build Instance
+    public static CitizenState_Build Instance
     {
         get { return instance; }
     }
@@ -31,7 +31,7 @@ public class State_Build : State<Citizen>
         if (citizen.targetGameObject == null)
         {
             citizen.navMeshAgent.ResetPath();
-            citizen.ChangeState(State_Idle.Instance);
+            citizen.ChangeState(CitizenState_Idle.Instance);
         }
 
         ///////////////////////////////////////

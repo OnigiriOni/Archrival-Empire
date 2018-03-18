@@ -183,9 +183,9 @@ public class Building : MonoBehaviour
     public void TakeDamage(DamageStruct damage)
     {
         // The damage that is inflicted to the object.
-        float damageValue = (damage.normalDamage * (combatDefense.mormalArmor / 100)) +
-                            (damage.pierceDamage * (combatDefense.pierceArmor / 100)) +
-                            (damage.siegeDamage * (combatDefense.siegeArmor / 100 ));
+        float damageValue = (damage.normalDamage - (damage.normalDamage * combatDefense.mormalArmor / 100))
+                            + (damage.pierceDamage - (damage.pierceDamage * combatDefense.pierceArmor / 100))
+                            + (damage.siegeDamage - (damage.siegeDamage * combatDefense.siegeArmor / 100));
 
         // Deal the damage and destory the object if health is zero.
         combatDefense.health -= damageValue;

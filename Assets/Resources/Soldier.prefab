@@ -398,10 +398,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   name: Soldier
-  health: 100
   playerTag: 0
   player: {fileID: 0}
-  navMeshAgent: {fileID: 0}
   buildCost:
     food: 50
     wood: 0
@@ -409,14 +407,17 @@ MonoBehaviour:
     gold: 25
   buildTime: 5
   buildTimeLeft: 0
-  damage:
-    toCitizen: 50
-    toSoldiers: 40
-    toCavalier: 40
-    toArtillery: 40
-    toBuildings: 10
-  damageCooldown: 0.5
-  damageCooldownLeft: 0
+  combatDefense:
+    health: 100
+    mormalArmor: 50
+    pierceArmor: 75
+    siegeArmor: 0
+  combatOffense:
+    normalDamage: 50
+    pierceDamage: 0
+    siegeDamage: 0
+    attackRange: 20
+    damageCooldown: 0.75
 --- !u!136 &136060490150152554
 CapsuleCollider:
   m_ObjectHideFlags: 1

@@ -858,7 +858,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   name: Capitol
-  health: 500
   playerTag: 0
   player: {fileID: 0}
   buildCost:
@@ -873,6 +872,11 @@ MonoBehaviour:
     canStoreWood: 1
     canStoreStone: 1
     canStoreGold: 1
+  combatDefense:
+    health: 500
+    mormalArmor: 50
+    pierceArmor: 50
+    siegeArmor: 20
   citizen: {fileID: 114923208338877644, guid: c96eb8ec0da23ac43976f448e34bfd2d, type: 2}
 --- !u!208 &208697521543911948
 NavMeshObstacle:

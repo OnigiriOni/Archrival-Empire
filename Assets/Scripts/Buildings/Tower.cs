@@ -7,13 +7,12 @@ public class Tower : Building
     [Header("Tower Options")]
     public CombatOffense combatOffense;
 
-    [Space(10)]
     [System.NonSerialized]
     // The perceived units are used to identify enemies.
     public List<Unit> perceivedUnits;
 
     [System.NonSerialized]
-    // The target gameobject is the target the tower is attacking.
+    // The target object is the target the tower is attacking.
     public Unit targetUnit;
 
     private void Start()
@@ -37,7 +36,6 @@ public class Tower : Building
         if (targetUnit != null && combatOffense.damageCooldownLeft <= 0)
         {
             Attack(targetUnit);
-            combatOffense.damageCooldownLeft = combatOffense.damageCooldown;
         }
     }
 
@@ -114,6 +112,9 @@ public class Tower : Building
         // Deal damage to the unit.
         unit.TakeDamage(damageStruct);
 
+        // Reset the damage cooldown.
+        combatOffense.damageCooldownLeft = combatOffense.damageCooldown;
+
         // Visualize attack.
         VisualizeAttack(unit);
     }
@@ -133,6 +134,6 @@ public class Tower : Building
         unitPosition.y += 1.5F;
 
         //Draw the ray. Cool stuff.
-        Debug.DrawRay(rayStartPoint, unitPosition - rayStartPoint, Color.red, 0.15F);
+        Debug.DrawRay(rayStartPoint, unitPosition - rayStartPoint, player.playerColor, 0.15F);
     }
 }
