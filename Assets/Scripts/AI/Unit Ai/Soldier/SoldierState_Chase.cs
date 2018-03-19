@@ -22,7 +22,27 @@ public class SoldierState_Chase : State<Soldier>
 
     public override void Execute(Soldier soldier)
     {
+        // Check if the target died during the chase.
+        if (soldier.targetObject != null)
+        {
+            // The target is in range and can be shot.
+            if (soldier.perceivedObjects.Contains(soldier.targetObject))
+            {
+                soldier.ChangeState(SoldierState_Attack.Instance);
+            }
+
+            // Set the new target position.
+            if (soldier.targetObject.transform.position != soldier.navMeshAgent.destination)
+            {
+                soldier.navMeshAgent.SetDestination(soldier.targetObject.transform.position);
+            }
+        }
         
+        // The target is null, resume idle.
+        if (soldier.targetObject == null)
+        {
+            soldier.ChangeState(SoldierState_Idle.Instance);
+        }
     }
 
     public override void Exit(Soldier soldier)

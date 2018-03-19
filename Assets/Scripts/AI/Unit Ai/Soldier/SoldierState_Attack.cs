@@ -22,14 +22,16 @@ public class SoldierState_Attack : State<Soldier>
 
     public override void Execute(Soldier soldier)
     {
-        // The player has selected a target for the soldier.
+        // Check if the target died, for whatever reason.
         if (soldier.targetObject != null)
         {
             // If the target is in range attack it, otherwise chase it
             if (soldier.perceivedObjects.Contains(soldier.targetObject))
             {
+                // Attack the enemy if possible.
                 if (soldier.combatOffense.damageCooldownLeft <= 0)
                 {
+                    soldier.navMeshAgent.ResetPath();
                     soldier.DealDamage(soldier.targetObject);
                 }
             }
@@ -46,6 +48,7 @@ public class SoldierState_Attack : State<Soldier>
             SelectNearestTarget(soldier);
         }
 
+        // If no enemies are around and the soldier has no target, idle.
         if (soldier.targetObject == null)
         {
             soldier.ChangeState(SoldierState_Idle.Instance);

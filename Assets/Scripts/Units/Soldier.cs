@@ -3,13 +3,6 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.AI;
 
-public enum SoldierState
-{
-    Idle,
-    Attack,
-    Chase
-}
-
 public class Soldier : Unit
 {
     [System.NonSerialized]
@@ -20,41 +13,35 @@ public class Soldier : Unit
     // The target object is the target the soldier is attacking.
     public GameObject targetObject;
 
-    private StateMaschine<Soldier> stateMaschine;
+    // The state machine for the soldier.
+    private StateMachine<Soldier> stateMachine;
 
-    [System.NonSerialized]
-    public SoldierState state;
 
     private void Start()
     {
         // Set the player color and player tag.
         SetPlayerStats();
 
+        // Set stuff up before the state machine, because it uses this.
         perceivedObjects = new List<GameObject>();
         GetComponent<SphereCollider>().radius = combatOffense.attackRange;
         navMeshAgent = GetComponent<NavMeshAgent>();
 
-        stateMaschine = new StateMaschine<Soldier>();
-        stateMaschine.Initialize(this, SoldierState_Idle.Instance);
-
-        
-
-        
+        // Initialize the state machine.
+        stateMachine = new StateMachine<Soldier>();
+        stateMachine.Initialize(this, SoldierState_Idle.Instance);
     }
 
     private void Update()
     {
+        // Calculate the damage cooldown.
         combatOffense.CalculateDamageCooldown();
-
-        stateMaschine.Update();
 
         // Clear the perceived objects list from all null objects.
         perceivedObjects.ForEach(x => { if (x == null) perceivedObjects.Remove(x); });
-    }
 
-    public void ChangeState(State<Soldier> state)
-    {
-        stateMaschine.SetState(state);
+        // Update the state maschine.
+        stateMachine.Update();
     }
 
     private void OnTriggerEnter(Collider other)
@@ -67,7 +54,8 @@ public class Soldier : Unit
         {
             perceivedObjects.Add(other.gameObject);
         }
-        else if (building != null && building.playerTag != playerTag)
+
+        if (building != null && building.playerTag != playerTag)
         {
             perceivedObjects.Add(other.gameObject);
         }
@@ -82,21 +70,40 @@ public class Soldier : Unit
         }
     }
 
+
+    /// <summary>
+    /// Changes the state the soldier is in. Only use this in the state maschine itself.
+    /// </summary>
+    /// <param name="state">The new state.</param>
+    public void ChangeState(State<Soldier> state)
+    {
+        stateMachine.SetState(state);
+    }
+
+    /// <summary>
+    /// The soldier tries to attack an enemy object (Unit/Building).
+    /// </summary>
+    /// <param name="target">The enemy object (Unit/Building).</param>
     public void Attack(GameObject target)
     {
         targetObject = target;
-        stateMaschine.SetState(SoldierState_Attack.Instance);
-        state = SoldierState.Attack;
+        stateMachine.SetState(SoldierState_Attack.Instance);
     }
 
+    /// <summary>
+    /// The soldier moves to a location, ignoring enemies.
+    /// </summary>
+    /// <param name="targetLocation">The target location.</param>
     public void MoveTo(Vector3 targetLocation)
     {
+        stateMachine.SetState(SoldierState_Move.Instance);
         navMeshAgent.SetDestination(targetLocation);
     }
 
     /// <summary>
-    /// Deal damage to an object.
+    /// Deal damage to an object (Unit/Building).
     /// </summary>
+    /// <param name="target">The target object (Unit/Building).</param>
     public void DealDamage(GameObject target)
     {
         // Fill the damage struct.
@@ -121,13 +128,13 @@ public class Soldier : Unit
         combatOffense.damageCooldownLeft = combatOffense.damageCooldown;
 
         // Visualize attack.
-        VisualizeAttack(unit.gameObject);
+        VisualizeAttack(target);
     }
 
     /// <summary>
     /// Draws a debug ray to the target (Symbolysing shooting).
     /// </summary>
-    /// <param name="unit"></param>
+    /// <param name="target">The gameObject that gets shot.</param>
     private void VisualizeAttack(GameObject target)
     {
         // The start point of the ray.

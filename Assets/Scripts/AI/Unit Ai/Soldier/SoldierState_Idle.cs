@@ -17,9 +17,7 @@ public class SoldierState_Idle : State<Soldier>
 
     public override void Enter(Soldier soldier)
     {
-        //TODO: may cause issues like in citizen.
         soldier.navMeshAgent.ResetPath();
-        soldier.state = SoldierState.Idle;
     }
 
     public override void Execute(Soldier soldier)

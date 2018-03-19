@@ -291,6 +291,7 @@ GameObject:
   serializedVersion: 5
   m_Component:
   - component: {fileID: 4232709574718910}
+  - component: {fileID: 54214132881937450}
   - component: {fileID: 65533496646942050}
   - component: {fileID: 208695130244919500}
   - component: {fileID: 114232469111684354}
@@ -1338,6 +1339,21 @@ MeshFilter:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1674836086803762}
   m_Mesh: {fileID: 10202, guid: 0000000000000000e000000000000000, type: 0}
+--- !u!54 &54214132881937450
+Rigidbody:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1685497343142500}
+  serializedVersion: 2
+  m_Mass: 1
+  m_Drag: 0
+  m_AngularDrag: 0.05
+  m_UseGravity: 0
+  m_IsKinematic: 1
+  m_Interpolate: 0
+  m_Constraints: 126
+  m_CollisionDetection: 0
 --- !u!65 &65533496646942050
 BoxCollider:
   m_ObjectHideFlags: 1
@@ -1378,9 +1394,9 @@ MonoBehaviour:
     canStoreGold: 1
   combatDefense:
     health: 100
-    mormalArmor: 70
-    pierceArmor: 70
-    siegeArmor: 0
+    mormalArmor: 80
+    pierceArmor: 80
+    siegeArmor: 40
 --- !u!208 &208695130244919500
 NavMeshObstacle:
   m_ObjectHideFlags: 1

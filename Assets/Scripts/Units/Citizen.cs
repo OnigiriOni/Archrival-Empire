@@ -131,7 +131,7 @@ public class Citizen : Unit
     [System.NonSerialized]
     public float resourceCollectionCooldownLeft = 0F;
 
-    private StateMaschine<Citizen> stateMaschine;
+    private StateMachine<Citizen> stateMachine;
 
     [System.NonSerialized]
     // The target resource is accessed in the State_GatherResource.
@@ -153,8 +153,8 @@ public class Citizen : Unit
         // Set the PlayerTag to the players PlayerTag.
         playerTag = player.playerTag;
 
-        stateMaschine = new StateMaschine<Citizen>();
-        stateMaschine.Initialize(this, CitizenState_Idle.Instance);
+        stateMachine = new StateMachine<Citizen>();
+        stateMachine.Initialize(this, CitizenState_Idle.Instance);
 
         navMeshAgent = GetComponent<NavMeshAgent>();
 
@@ -167,7 +167,7 @@ public class Citizen : Unit
 
     private void Update()
     {
-        stateMaschine.Update();
+        stateMachine.Update();
 
         // Update the cooldowns
         resourceCollectionCooldownLeft -= Time.deltaTime;
@@ -202,13 +202,13 @@ public class Citizen : Unit
 
     public void ChangeState(State<Citizen> state)
     {
-        stateMaschine.SetState(state);
+        stateMachine.SetState(state);
     }
 
     public void GatherResource(Resource resource)
     {
         targetResource = resource;
-        stateMaschine.SetState(CitizenState_GatherResource.Instance);
+        stateMachine.SetState(CitizenState_GatherResource.Instance);
         group = SetWorkerGroup(resource);
     }
 
@@ -233,7 +233,7 @@ public class Citizen : Unit
     public void Build(GameObject building)
     {
         targetGameObject = building;
-        stateMaschine.SetState(CitizenState_Build.Instance);
+        stateMachine.SetState(CitizenState_Build.Instance);
         group = WorkerGroup.Builder;
     }
 }

@@ -69,6 +69,8 @@ GameObject:
   m_Component:
   - component: {fileID: 4713709245767532}
   - component: {fileID: 195135157542897256}
+  - component: {fileID: 54438131533773376}
+  - component: {fileID: 135398865467461432}
   - component: {fileID: 114592784667826252}
   m_Layer: 0
   m_Name: Artillery
@@ -430,6 +432,21 @@ MeshFilter:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1752408423367718}
   m_Mesh: {fileID: 10206, guid: 0000000000000000e000000000000000, type: 0}
+--- !u!54 &54438131533773376
+Rigidbody:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1537255003229012}
+  serializedVersion: 2
+  m_Mass: 1
+  m_Drag: 0
+  m_AngularDrag: 0
+  m_UseGravity: 0
+  m_IsKinematic: 1
+  m_Interpolate: 0
+  m_Constraints: 0
+  m_CollisionDetection: 0
 --- !u!114 &114592784667826252
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -462,6 +479,18 @@ MonoBehaviour:
     siegeDamage: 100
     attackRange: 25
     damageCooldown: 0
+--- !u!135 &135398865467461432
+SphereCollider:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1537255003229012}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Radius: 25
+  m_Center: {x: 0, y: 0, z: 0}
 --- !u!195 &195135157542897256
 NavMeshAgent:
   m_ObjectHideFlags: 1

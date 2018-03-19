@@ -74,6 +74,8 @@ GameObject:
   m_Component:
   - component: {fileID: 4174160204193028}
   - component: {fileID: 195062014577969748}
+  - component: {fileID: 54625045802792110}
+  - component: {fileID: 135752835612153386}
   - component: {fileID: 114861521345219748}
   m_Layer: 0
   m_Name: Soldier
@@ -362,6 +364,21 @@ MeshFilter:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1583355086246880}
   m_Mesh: {fileID: 10206, guid: 0000000000000000e000000000000000, type: 0}
+--- !u!54 &54625045802792110
+Rigidbody:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1628479900314386}
+  serializedVersion: 2
+  m_Mass: 1
+  m_Drag: 0
+  m_AngularDrag: 0
+  m_UseGravity: 0
+  m_IsKinematic: 1
+  m_Interpolate: 0
+  m_Constraints: 0
+  m_CollisionDetection: 0
 --- !u!65 &65449760860871590
 BoxCollider:
   m_ObjectHideFlags: 1
@@ -418,6 +435,18 @@ MonoBehaviour:
     siegeDamage: 0
     attackRange: 20
     damageCooldown: 0.75
+--- !u!135 &135752835612153386
+SphereCollider:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1628479900314386}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Radius: 0.5
+  m_Center: {x: 0, y: 1, z: 0}
 --- !u!136 &136060490150152554
 CapsuleCollider:
   m_ObjectHideFlags: 1
