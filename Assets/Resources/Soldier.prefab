@@ -73,9 +73,9 @@ GameObject:
   serializedVersion: 5
   m_Component:
   - component: {fileID: 4174160204193028}
+  - component: {fileID: 136321418933299414}
   - component: {fileID: 195062014577969748}
   - component: {fileID: 54625045802792110}
-  - component: {fileID: 135752835612153386}
   - component: {fileID: 114861521345219748}
   m_Layer: 0
   m_Name: Soldier
@@ -117,6 +117,23 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
+--- !u!1 &1915330564831084
+GameObject:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  serializedVersion: 5
+  m_Component:
+  - component: {fileID: 4416159683327824}
+  - component: {fileID: 135092664527443984}
+  - component: {fileID: 114442614770935630}
+  m_Layer: 0
+  m_Name: Senses
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
 --- !u!4 &4093027488081488
 Transform:
   m_ObjectHideFlags: 1
@@ -137,10 +154,11 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1628479900314386}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -18.91, y: 0, z: -2.9999995}
+  m_LocalPosition: {x: 242.1, y: 0, z: 101.6}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 4415974389218506}
+  - {fileID: 4416159683327824}
   - {fileID: 4678148541397336}
   - {fileID: 4598791426176154}
   m_Father: {fileID: 0}
@@ -159,6 +177,19 @@ Transform:
   m_Father: {fileID: 4174160204193028}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!4 &4416159683327824
+Transform:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1915330564831084}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 4174160204193028}
+  m_RootOrder: 1
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!4 &4598791426176154
 Transform:
   m_ObjectHideFlags: 1
@@ -172,7 +203,7 @@ Transform:
   - {fileID: 4093027488081488}
   - {fileID: 4874542850292784}
   m_Father: {fileID: 4174160204193028}
-  m_RootOrder: 2
+  m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!4 &4678148541397336
 Transform:
@@ -185,7 +216,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 4174160204193028}
-  m_RootOrder: 1
+  m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!4 &4874542850292784
 Transform:
@@ -403,6 +434,17 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 1, y: 1, z: 1}
   m_Center: {x: 0, y: 0, z: 0}
+--- !u!114 &114442614770935630
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1915330564831084}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 26735cd2be4960c4686c8e897c12877c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!114 &114861521345219748
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -434,19 +476,19 @@ MonoBehaviour:
     pierceDamage: 0
     siegeDamage: 0
     attackRange: 20
-    damageCooldown: 0.75
---- !u!135 &135752835612153386
+    damageCooldown: 1
+--- !u!135 &135092664527443984
 SphereCollider:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1628479900314386}
+  m_GameObject: {fileID: 1915330564831084}
   m_Material: {fileID: 0}
-  m_IsTrigger: 0
+  m_IsTrigger: 1
   m_Enabled: 1
   serializedVersion: 2
-  m_Radius: 0.5
-  m_Center: {x: 0, y: 1, z: 0}
+  m_Radius: 20
+  m_Center: {x: 0, y: 0, z: 0}
 --- !u!136 &136060490150152554
 CapsuleCollider:
   m_ObjectHideFlags: 1
@@ -473,6 +515,19 @@ CapsuleCollider:
   m_Height: 2
   m_Direction: 1
   m_Center: {x: 0, y: 0, z: 0}
+--- !u!136 &136321418933299414
+CapsuleCollider:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1628479900314386}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  m_Radius: 0.5
+  m_Height: 2
+  m_Direction: 1
+  m_Center: {x: 0, y: 1, z: 0}
 --- !u!195 &195062014577969748
 NavMeshAgent:
   m_ObjectHideFlags: 1

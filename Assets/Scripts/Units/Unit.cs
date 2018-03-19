@@ -72,6 +72,10 @@ public class Unit : MonoBehaviour
     public CombatDefense combatDefense;
     public CombatOffense combatOffense;
 
+    [System.NonSerialized]
+    // The perceived units list holds enemy units and buildings.
+    public List<GameObject> perceivedObjects;
+
     public void SetPlayerStats()
     {
         // Set the color of the building to the player color (Takes only the first Children and its first Material).

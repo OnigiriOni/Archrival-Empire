@@ -39,10 +39,6 @@ public class Tower : Building
         }
     }
 
-    /// <summary>
-    /// Add units to the perceived units list.
-    /// </summary>
-    /// <param name="other"></param>
     private void OnTriggerEnter(Collider other)
     {
         Unit unit = other.gameObject.GetComponent<Unit>();
@@ -54,10 +50,6 @@ public class Tower : Building
         }
     }
 
-    /// <summary>
-    /// Removes units from the perceived units list.
-    /// </summary>
-    /// <param name="other"></param>
     private void OnTriggerExit(Collider other)
     {
         Unit unit = other.gameObject.GetComponent<Unit>();
@@ -68,6 +60,7 @@ public class Tower : Building
             perceivedUnits.Remove(unit);
         }
     }
+
 
     /// <summary>
     /// Select the nearest perceived unit as a target.

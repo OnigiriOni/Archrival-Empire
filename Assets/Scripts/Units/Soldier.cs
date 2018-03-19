@@ -5,10 +5,10 @@ using UnityEngine.AI;
 
 public class Soldier : Unit
 {
-    [System.NonSerialized]
-    // The perceived units are used to identify enemies.
-    public List<GameObject> perceivedObjects;
-
+    //[System.NonSerialized]
+    //// The perceived units are used to identify enemies.
+    //public List<GameObject> perceivedObjects;
+    
     [System.NonSerialized]
     // The target object is the target the soldier is attacking.
     public GameObject targetObject;
@@ -24,7 +24,6 @@ public class Soldier : Unit
 
         // Set stuff up before the state machine, because it uses this.
         perceivedObjects = new List<GameObject>();
-        GetComponent<SphereCollider>().radius = combatOffense.attackRange;
         navMeshAgent = GetComponent<NavMeshAgent>();
 
         // Initialize the state machine.
@@ -42,32 +41,6 @@ public class Soldier : Unit
 
         // Update the state maschine.
         stateMachine.Update();
-    }
-
-    private void OnTriggerEnter(Collider other)
-    {
-        //Add enemy units and buildings to the perceived objects list.
-        Unit unit = other.gameObject.GetComponent<Unit>();
-        Building building = other.gameObject.GetComponent<Building>();
-
-        if (unit != null && unit.playerTag != playerTag)
-        {
-            perceivedObjects.Add(other.gameObject);
-        }
-
-        if (building != null && building.playerTag != playerTag)
-        {
-            perceivedObjects.Add(other.gameObject);
-        }
-    }
-
-    private void OnTriggerExit(Collider other)
-    {
-        // Removes objects from the perceived objects list.
-        if (perceivedObjects.Contains(other.gameObject))
-        {
-            perceivedObjects.Remove(other.gameObject);
-        }
     }
 
 
