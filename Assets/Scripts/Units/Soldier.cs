@@ -70,7 +70,7 @@ public class Soldier : Unit
     }
 
     /// <summary>
-    /// Deal damage to an object (Unit/Building).
+    /// Deal damage to an object (Unit/Building). Only use this in the state maschine itself.
     /// </summary>
     /// <param name="target">The target object (Unit/Building).</param>
     public void DealDamage(GameObject target)

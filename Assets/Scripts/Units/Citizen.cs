@@ -163,6 +163,7 @@ public class Citizen : Unit
 
         // Test functions
         //GatherResource(GameObject.Find("Resource_Food").GetComponent<Resource>());
+        MoveTo(new Vector3(185, 0, 185));
     }
 
     private void Update()

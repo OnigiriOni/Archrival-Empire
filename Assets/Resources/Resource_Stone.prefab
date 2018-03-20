@@ -1217,7 +1217,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 451c2e9a459835248b0ab9bb5210545f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  resourceTag: 2
+  resourceType: 0
   amount: 10000
 --- !u!208 &208564172323767216
 NavMeshObstacle:
@@ -1230,7 +1230,7 @@ NavMeshObstacle:
   m_Shape: 1
   m_Extents: {x: 2, y: 0.5, z: 2}
   m_MoveThreshold: 0.1
-  m_Carve: 1
+  m_Carve: 0
   m_CarveOnlyStationary: 1
   m_Center: {x: 0, y: 0.5, z: 0}
   m_TimeToStationary: 0.5
