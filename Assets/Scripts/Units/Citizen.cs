@@ -141,9 +141,9 @@ public class Citizen : Unit
     // The target gameobject is accessed is the State_Move.
     public GameObject targetGameObject;
 
-    [System.NonSerialized]
+    //[System.NonSerialized]
     // The perceived objects are used for state checks.
-    public List<GameObject> perceivedObjects;
+    //public List<GameObject> perceivedObjects;
 
 
     private void Start()

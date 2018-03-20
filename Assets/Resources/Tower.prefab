@@ -45,6 +45,23 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
+--- !u!1 &1203936376038000
+GameObject:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  serializedVersion: 5
+  m_Component:
+  - component: {fileID: 4825168851745176}
+  - component: {fileID: 135961700970929576}
+  - component: {fileID: 114527666980470548}
+  m_Layer: 0
+  m_Name: Senses
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
 --- !u!1 &1464017575060580
 GameObject:
   m_ObjectHideFlags: 0
@@ -89,7 +106,6 @@ GameObject:
   - component: {fileID: 4278468045170908}
   - component: {fileID: 54575366645198038}
   - component: {fileID: 65438805510205702}
-  - component: {fileID: 135733822741539288}
   - component: {fileID: 208882284219745194}
   - component: {fileID: 114267338867716902}
   m_Layer: 0
@@ -161,7 +177,7 @@ Transform:
   m_LocalScale: {x: 3, y: 6, z: 3}
   m_Children: []
   m_Father: {fileID: 4278468045170908}
-  m_RootOrder: 2
+  m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!4 &4278468045170908
 Transform:
@@ -170,10 +186,11 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1529165540364344}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalPosition: {x: 146.4, y: 0, z: 122.7}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 4367525089113540}
+  - {fileID: 4825168851745176}
   - {fileID: 4570481157214486}
   - {fileID: 4001238979298714}
   - {fileID: 4997376812972234}
@@ -207,7 +224,7 @@ Transform:
   m_LocalScale: {x: 2.15, y: 2.15, z: 2.15}
   m_Children: []
   m_Father: {fileID: 4278468045170908}
-  m_RootOrder: 5
+  m_RootOrder: 6
   m_LocalEulerAnglesHint: {x: -35, y: 0, z: 45}
 --- !u!4 &4570481157214486
 Transform:
@@ -220,7 +237,7 @@ Transform:
   m_LocalScale: {x: 4, y: 1, z: 4}
   m_Children: []
   m_Father: {fileID: 4278468045170908}
-  m_RootOrder: 1
+  m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!4 &4656606160087630
 Transform:
@@ -233,7 +250,20 @@ Transform:
   m_LocalScale: {x: 2.8, y: 2, z: 2.8}
   m_Children: []
   m_Father: {fileID: 4278468045170908}
-  m_RootOrder: 6
+  m_RootOrder: 7
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!4 &4825168851745176
+Transform:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1203936376038000}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 4278468045170908}
+  m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!4 &4864927494839248
 Transform:
@@ -246,7 +276,7 @@ Transform:
   m_LocalScale: {x: 2.15, y: 2.15, z: 2.15}
   m_Children: []
   m_Father: {fileID: 4278468045170908}
-  m_RootOrder: 4
+  m_RootOrder: 5
   m_LocalEulerAnglesHint: {x: 35, y: 0, z: 45}
 --- !u!4 &4997376812972234
 Transform:
@@ -259,7 +289,7 @@ Transform:
   m_LocalScale: {x: 3.5, y: 1, z: 3.5}
   m_Children: []
   m_Father: {fileID: 4278468045170908}
-  m_RootOrder: 3
+  m_RootOrder: 4
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!23 &23357227788146734
 MeshRenderer:
@@ -602,9 +632,9 @@ MonoBehaviour:
     canStoreStone: 0
     canStoreGold: 0
   combatDefense:
-    health: 200
-    mormalArmor: 80
-    pierceArmor: 80
+    health: 500
+    mormalArmor: 90
+    pierceArmor: 90
     siegeArmor: 35
   combatOffense:
     normalDamage: 20
@@ -612,17 +642,28 @@ MonoBehaviour:
     siegeDamage: 20
     attackRange: 25
     damageCooldown: 1.5
---- !u!135 &135733822741539288
+--- !u!114 &114527666980470548
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1203936376038000}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d158ac399aad8c3498ffc470570245f7, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!135 &135961700970929576
 SphereCollider:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1529165540364344}
+  m_GameObject: {fileID: 1203936376038000}
   m_Material: {fileID: 0}
   m_IsTrigger: 1
   m_Enabled: 1
   serializedVersion: 2
-  m_Radius: 25
+  m_Radius: 20
   m_Center: {x: 0, y: 0, z: 0}
 --- !u!208 &208882284219745194
 NavMeshObstacle:

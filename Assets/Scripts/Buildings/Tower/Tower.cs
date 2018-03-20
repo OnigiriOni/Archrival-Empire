@@ -15,6 +15,7 @@ public class Tower : Building
     // The target object is the target the tower is attacking.
     public Unit targetUnit;
 
+
     private void Start()
     {
         // Set the player color and player tag.
@@ -36,28 +37,6 @@ public class Tower : Building
         if (targetUnit != null && combatOffense.damageCooldownLeft <= 0)
         {
             Attack(targetUnit);
-        }
-    }
-
-    private void OnTriggerEnter(Collider other)
-    {
-        Unit unit = other.gameObject.GetComponent<Unit>();
-
-        // If the object is a enemy unit, add it.
-        if (unit != null && unit.playerTag != playerTag && !perceivedUnits.Contains(unit))
-        {
-            perceivedUnits.Add(unit);
-        }
-    }
-
-    private void OnTriggerExit(Collider other)
-    {
-        Unit unit = other.gameObject.GetComponent<Unit>();
-
-        // If the object is a perceived unit, remove it.
-        if (unit != null && perceivedUnits.Contains(unit))
-        {
-            perceivedUnits.Remove(unit);
         }
     }
 
@@ -115,7 +94,7 @@ public class Tower : Building
     /// <summary>
     /// Draws a debug ray to the target (Symbolysing shooting).
     /// </summary>
-    /// <param name="unit"></param>
+    /// <param name="unit">The unit that gets shot.</param>
     private void VisualizeAttack(Unit unit)
     {
         // The start point of the ray.
@@ -127,6 +106,6 @@ public class Tower : Building
         unitPosition.y += 1.5F;
 
         //Draw the ray. Cool stuff.
-        Debug.DrawRay(rayStartPoint, unitPosition - rayStartPoint, player.playerColor, 0.15F);
+        Debug.DrawRay(rayStartPoint, unitPosition - rayStartPoint, Color.red, 0.15F);
     }
 }

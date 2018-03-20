@@ -889,7 +889,7 @@ MonoBehaviour:
     canStoreStone: 1
     canStoreGold: 1
   combatDefense:
-    health: 500
+    health: 1000
     mormalArmor: 75
     pierceArmor: 75
     siegeArmor: 20

@@ -5,10 +5,6 @@ using UnityEngine.AI;
 
 public class Soldier : Unit
 {
-    //[System.NonSerialized]
-    //// The perceived units are used to identify enemies.
-    //public List<GameObject> perceivedObjects;
-    
     [System.NonSerialized]
     // The target object is the target the soldier is attacking.
     public GameObject targetObject;
