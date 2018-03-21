@@ -26,21 +26,10 @@ public class CitizenState_GatherResource : State<Citizen>
                 citizen.ChangeState(CitizenState_DeliverResource.Instance);
             }
         }
-
-        // Is the target resource not in range?
-        if (!citizen.perceivedObjects.Contains(citizen.targetResource.gameObject))
-        {
-            // Move to the target resource
-            citizen.navMeshAgent.SetDestination(citizen.targetResource.transform.position);
-        }
     }
 
     public override void Execute(Citizen citizen)
     {
-        ///////////////////////////////////////
-        // Preconditions
-        ///////////////////////////////////////
-
         // Is the backpack full?
         if (citizen.backpack.IsFull())
         {
@@ -48,24 +37,30 @@ public class CitizenState_GatherResource : State<Citizen>
             citizen.ChangeState(CitizenState_DeliverResource.Instance);
         }
 
-        // Check if the resource disappeared because there are no resources in the object anymore!
-        // May cause failures if the destroyed object is not null.
+        // Check if the resource disappeared because there are no resources in the object anymore.
         if (citizen.targetResource == null)
         {
-            citizen.navMeshAgent.ResetPath();
-            citizen.ChangeState(CitizenState_Idle.Instance);
+            // Check for other resources of the same type in the area.
+            if (!citizen.SelectNewResource())
+            {
+                // Deliver all current resources in the backpack if there are no other resources around.
+                if (citizen.targetResource == null && citizen.backpack.GetFreeSpace() > 0)
+                {
+                    citizen.ChangeState(CitizenState_DeliverResource.Instance);
+                }
+                else
+                {
+                    citizen.ChangeState(CitizenState_Idle.Instance);
+                }
+                
+            }
         }
 
-        ///////////////////////////////////////
-        // Action
-        ///////////////////////////////////////
-
         // Gather the resource if the target resource is in range
-        if (citizen.targetResource != null && citizen.perceivedObjects.Contains(citizen.targetResource.gameObject))
+        if (citizen.targetResource != null && citizen.perceivedObjectsInRange.Contains(citizen.targetResource.gameObject))
         {
             citizen.navMeshAgent.ResetPath();
             GatherResource(citizen);
-            Debug.Log(citizen.name + " :: " + citizen.backpack.currentAmount);
         }
         else
         {

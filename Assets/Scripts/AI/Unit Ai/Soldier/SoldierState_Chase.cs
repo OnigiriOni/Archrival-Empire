@@ -26,7 +26,7 @@ public class SoldierState_Chase : State<Soldier>
         if (soldier.targetObject != null)
         {
             // The target is in range and can be shot.
-            if (soldier.perceivedObjects.Contains(soldier.targetObject))
+            if (soldier.perceivedObjectsInRange.Contains(soldier.targetObject))
             {
                 soldier.ChangeState(SoldierState_Attack.Instance);
             }

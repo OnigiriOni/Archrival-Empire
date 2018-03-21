@@ -26,7 +26,7 @@ public class SoldierState_Attack : State<Soldier>
         if (soldier.targetObject != null)
         {
             // If the target is in range attack it, otherwise chase it
-            if (soldier.perceivedObjects.Contains(soldier.targetObject))
+            if (soldier.perceivedObjectsInRange.Contains(soldier.targetObject))
             {
                 // Attack the enemy if possible.
                 if (soldier.combatOffense.damageCooldownLeft <= 0)
@@ -43,7 +43,7 @@ public class SoldierState_Attack : State<Soldier>
         }
 
         // If enemies are around shoot them.
-        if (soldier.perceivedObjects.Count >= 1)
+        if (soldier.perceivedObjectsInRange.Count >= 1)
         {
             SelectNearestTarget(soldier);
         }
@@ -53,7 +53,6 @@ public class SoldierState_Attack : State<Soldier>
         {
             soldier.ChangeState(SoldierState_Idle.Instance);
         }
-
     }
 
     public override void Exit(Soldier soldier)
@@ -64,22 +63,22 @@ public class SoldierState_Attack : State<Soldier>
     private void SelectNearestTarget(Soldier soldier)
     {
         // Clear the perceived objects list from all null objects.
-        soldier.perceivedObjects.ForEach(x => { if (x == null) soldier.perceivedObjects.Remove(x); });
+        soldier.perceivedObjectsInRange.ForEach(x => { if (x == null) soldier.perceivedObjectsInRange.Remove(x); });
 
-        if (soldier.perceivedObjects.Count > 0)
+        if (soldier.perceivedObjectsInRange.Count > 0)
         {
             // Take the first object as reference for the shortest distance.
-            soldier.targetObject = soldier.perceivedObjects[0];
+            soldier.targetObject = soldier.perceivedObjectsInRange[0];
             float shortestDistance = Vector3.Distance(soldier.transform.position, soldier.targetObject.transform.position);
 
             // Start at 1 because we already got the object at 0.
-            for (int i = 1; i < soldier.perceivedObjects.Count; i++)
+            for (int i = 1; i < soldier.perceivedObjectsInRange.Count; i++)
             {
                 // If the object is closer, make it the target.
-                float distance = Vector3.Distance(soldier.transform.position, soldier.perceivedObjects[i].transform.position);
+                float distance = Vector3.Distance(soldier.transform.position, soldier.perceivedObjectsInRange[i].transform.position);
                 if (distance < shortestDistance)
                 {
-                    soldier.targetObject = soldier.perceivedObjects[i];
+                    soldier.targetObject = soldier.perceivedObjectsInRange[i];
                     shortestDistance = distance;
                 }
             }

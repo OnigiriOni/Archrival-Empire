@@ -17,6 +17,11 @@ public class CitizenState_Idle : State<Citizen>
 
     public override void Enter(Citizen citizen)
     {
+        citizen.navMeshAgent.ResetPath();
+
+        citizen.targetObject = null;
+        citizen.targetResource = null;
+
         citizen.group = WorkerGroup.Idle;
     }
 

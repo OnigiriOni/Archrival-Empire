@@ -5,10 +5,6 @@ using UnityEngine.AI;
 
 public class Soldier : Unit
 {
-    [System.NonSerialized]
-    // The target object is the target the soldier is attacking.
-    public GameObject targetObject;
-
     // The state machine for the soldier.
     private StateMachine<Soldier> stateMachine;
 
@@ -19,12 +15,14 @@ public class Soldier : Unit
         SetPlayerStats();
 
         // Set stuff up before the state machine, because it uses this.
-        perceivedObjects = new List<GameObject>();
+        perceivedObjectsInRange = new List<GameObject>();
         navMeshAgent = GetComponent<NavMeshAgent>();
 
-        // Initialize the state machine.
+        // Initialize the state machine. Do this after everything else.
         stateMachine = new StateMachine<Soldier>();
         stateMachine.Initialize(this, SoldierState_Idle.Instance);
+
+        //Attack(GameObject.Find("Tower"));
     }
 
     private void Update()
@@ -33,7 +31,7 @@ public class Soldier : Unit
         combatOffense.CalculateDamageCooldown();
 
         // Clear the perceived objects list from all null objects.
-        perceivedObjects.ForEach(x => { if (x == null) perceivedObjects.Remove(x); });
+        perceivedObjectsInRange.ForEach(x => { if (x == null) perceivedObjectsInRange.Remove(x); });
 
         // Update the state maschine.
         stateMachine.Update();

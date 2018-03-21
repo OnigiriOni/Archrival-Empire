@@ -23,7 +23,7 @@ public class SoldierState_Idle : State<Soldier>
     public override void Execute(Soldier soldier)
     {
         // If enemies are around shoot them.
-        if (soldier.perceivedObjects.Count >= 1)
+        if (soldier.perceivedObjectsInRange.Count >= 1)
         {
             soldier.ChangeState(SoldierState_Attack.Instance);
         }

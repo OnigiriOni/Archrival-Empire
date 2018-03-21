@@ -18,40 +18,31 @@ public class CitizenState_Build : State<Citizen>
     public override void Enter(Citizen citizen)
     {
         // Set the destination for the citizen.
-        citizen.navMeshAgent.SetDestination(citizen.targetGameObject.transform.position);
+        citizen.navMeshAgent.SetDestination(citizen.targetObject.transform.position);
     }
 
     public override void Execute(Citizen citizen)
     {
-        ///////////////////////////////////////
-        // Preconditions
-        ///////////////////////////////////////
-
         // Check if the building disappeared because the enemy shot it down!
-        if (citizen.targetGameObject == null)
+        if (citizen.targetObject == null)
         {
-            citizen.navMeshAgent.ResetPath();
             citizen.ChangeState(CitizenState_Idle.Instance);
         }
 
-        ///////////////////////////////////////
-        // Action
-        ///////////////////////////////////////
-
         // Build the building if it is in range.
-        if (citizen.targetGameObject != null && citizen.perceivedObjects.Contains(citizen.targetGameObject))
+        if (citizen.targetObject != null && citizen.perceivedObjectsInRange.Contains(citizen.targetObject))
         {
             citizen.navMeshAgent.ResetPath();
 
-            ConstructionSite constructionSite = citizen.targetGameObject.GetComponent<ConstructionSite>();
+            ConstructionSite constructionSite = citizen.targetObject.GetComponent<ConstructionSite>();
             constructionSite.buildTimeLeft -= Time.deltaTime;
         }
         else
         {
             // Move to the target building.
-            if (citizen.targetGameObject != null && citizen.navMeshAgent.destination != citizen.targetGameObject.transform.position)
+            if (citizen.targetObject != null && citizen.navMeshAgent.destination != citizen.targetObject.transform.position)
             {
-                citizen.navMeshAgent.SetDestination(citizen.targetGameObject.transform.position);
+                citizen.navMeshAgent.SetDestination(citizen.targetObject.transform.position);
             }
         }
     }

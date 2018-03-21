@@ -102,7 +102,7 @@ public class ProductionPipe : MonoBehaviour
         spawnPosition.x += 8F;
 
         // Spawn the citizen.
-        GameObject gameObject = (GameObject)Instantiate(Resources.Load(unit.name), spawnPosition, Quaternion.identity);
+        GameObject gameObject = (GameObject) Instantiate(Resources.Load(unit.name), spawnPosition, Quaternion.identity);
 
         // Set the stats of the citizen.
         Unit newUnit = gameObject.GetComponent<Unit>();
@@ -171,7 +171,7 @@ public class Building : MonoBehaviour
         playerTag = player.playerTag;
     }
 
-    private void Destruct()
+    protected void Destruct()
     {
         Destroy(gameObject);
     }

@@ -22,7 +22,6 @@ public class Tower : Building
         SetPlayerStats();
 
         perceivedUnits = new List<Unit>();
-        GetComponent<SphereCollider>().radius = combatOffense.attackRange;
     }
 
     private void Update()

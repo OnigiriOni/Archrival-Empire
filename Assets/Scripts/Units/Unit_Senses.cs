@@ -20,21 +20,21 @@ public class Unit_Senses : MonoBehaviour
 
         if (unit != null && unit.playerTag != parent.playerTag)
         {
-            parent.perceivedObjects.Add(other.gameObject);
+            parent.perceivedObjectsInRange.Add(other.gameObject);
         }
 
         if (building != null && building.playerTag != parent.playerTag)
         {
-            parent.perceivedObjects.Add(other.gameObject);
+            parent.perceivedObjectsInRange.Add(other.gameObject);
         }
     }
 
     private void OnTriggerExit(Collider other)
     {
         // Removes objects from the perceived objects list.
-        if (parent.perceivedObjects.Contains(other.gameObject))
+        if (parent.perceivedObjectsInRange.Contains(other.gameObject))
         {
-            parent.perceivedObjects.Remove(other.gameObject);
+            parent.perceivedObjectsInRange.Remove(other.gameObject);
         }
     }
 }

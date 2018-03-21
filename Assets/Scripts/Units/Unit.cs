@@ -74,7 +74,11 @@ public class Unit : MonoBehaviour
 
     [System.NonSerialized]
     // The perceived units list holds enemy units and buildings.
-    public List<GameObject> perceivedObjects;
+    public List<GameObject> perceivedObjectsInRange;
+
+    [System.NonSerialized]
+    // The target object is the object the unit is interacting with.
+    public GameObject targetObject;
 
     public void SetPlayerStats()
     {

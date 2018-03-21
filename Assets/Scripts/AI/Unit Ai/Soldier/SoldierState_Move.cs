@@ -17,13 +17,14 @@ public class SoldierState_Move : State<Soldier>
 
     public override void Enter(Soldier soldier)
     {
-
+        // This has no effect but keep code tidy.
+        soldier.targetObject = null;
     }
 
     public override void Execute(Soldier soldier)
     {
         // If the target location is reached, idle.
-        if (soldier.navMeshAgent.remainingDistance < 1)
+        if (!soldier.navMeshAgent.pathPending && soldier.navMeshAgent.remainingDistance < 1)
         {
             soldier.ChangeState(SoldierState_Idle.Instance);
         }

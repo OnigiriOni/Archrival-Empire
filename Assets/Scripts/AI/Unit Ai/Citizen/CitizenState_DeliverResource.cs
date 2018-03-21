@@ -17,67 +17,64 @@ public class CitizenState_DeliverResource : State<Citizen>
 
     public override void Enter(Citizen citizen)
     {
-        // Are suitable stores in range?
-        GameObject building = FindBuilding(citizen);
 
-        if (building == null)
-        {
-            citizen.navMeshAgent.ResetPath();
-            citizen.ChangeState(CitizenState_Idle.Instance);
-        }
-        else if (!citizen.perceivedObjects.Contains(building))
-        {
-            citizen.navMeshAgent.SetDestination(building.transform.position);
-            citizen.targetGameObject = building;
-        }
     }
 
     public override void Execute(Citizen citizen)
     {
-        ///////////////////////////////////////
-        // Preconditions
-        ///////////////////////////////////////
-
-        // Return to gathering the resource if the backpack is empty
-        if (citizen.backpack.currentAmount == 0)
+        // If the target object is not null the citizen was send to the object by the player
+        if (citizen.targetObject != null)
         {
-            citizen.ChangeState(CitizenState_GatherResource.Instance);
-        }
-
-        // Check if the building disappeared because the enemy shot it down!
-        if (citizen.targetGameObject == null)
-        {
-            // Are suitable stores in range?
-            GameObject building = FindBuilding(citizen);
-
-            if (building == null)
+            // Check if the target object is in range.
+            if (citizen.perceivedObjectsInRange.Contains(citizen.targetObject))
             {
+                // Store the resource.
                 citizen.navMeshAgent.ResetPath();
-                citizen.ChangeState(CitizenState_Idle.Instance);
+                citizen.player.resources.AddResource(citizen.backpack.RemoveResourceWithDefinition());
+
+                // Check if the citizen has previously collected at a specific resource field.
+                if (citizen.targetResource != null && citizen.backpack.currentAmount == 0)
+                {
+                    // Return to the resource.
+                    citizen.ChangeState(CitizenState_GatherResource.Instance);
+                }
+                else
+                {
+                    // Check if there is a new resource field around.
+                    if (citizen.group != WorkerGroup.Other && citizen.SelectNewResource())
+                    {
+                        // Collect at the new resource field.
+                        citizen.ChangeState(CitizenState_GatherResource.Instance);
+                    }
+                    else
+                    {
+                        // Idle if the citizen has not collected a resource previously.
+                        citizen.ChangeState(CitizenState_Idle.Instance);
+                    }
+                }
             }
-            else if (!citizen.perceivedObjects.Contains(building))
+            else
             {
-                citizen.navMeshAgent.SetDestination(building.transform.position);
-                citizen.targetGameObject = building;
+                // Set the target object as destination.
+                citizen.navMeshAgent.SetDestination(citizen.targetObject.transform.position);
             }
-        }
-
-        ///////////////////////////////////////
-        // Action
-        ///////////////////////////////////////
-
-        // Deliver the resources if the building is in range.
-        if (citizen.perceivedObjects.Contains(citizen.targetGameObject))
-        {
-            citizen.navMeshAgent.ResetPath();
-            citizen.player.resources.AddResource(citizen.backpack.RemoveResourceWithDefinition());
         }
         else
         {
-            // Move to the target building.
-            if (citizen.targetGameObject != null && citizen.navMeshAgent.destination != citizen.targetGameObject.transform.position)
+            // The target building is unknown or destroyed.
+
+            // Are suitable stores in range?
+            citizen.targetObject = FindBuilding(citizen);
+
+            if (citizen.targetObject != null)
             {
-                citizen.navMeshAgent.SetDestination(citizen.targetGameObject.transform.position);
+                // Set the target object as destination.
+                citizen.navMeshAgent.SetDestination(citizen.targetObject.transform.position);
+            }
+            else
+            {
+                // There are no suitable buildings.
+                citizen.ChangeState(CitizenState_Idle.Instance);
             }
         }
     }
@@ -96,7 +93,7 @@ public class CitizenState_DeliverResource : State<Citizen>
         float shortestDistance = 999F;
 
         // Are there buildings on the map?
-        if (buildings.Count >= 1)
+        if (buildings.Count > 0)
         {
             foreach (Building building in buildings)
             {

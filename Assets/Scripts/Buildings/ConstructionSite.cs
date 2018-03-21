@@ -2,26 +2,15 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class ConstructionSite : MonoBehaviour
+public class ConstructionSite : Building
 {
     [Header("Building Options")]
-    public new string name;
-    public float health;
-    public PlayerTag playerTag;
-    public Player player;
+    // The name of the building it will be. Must be the same as the name of the prefab.
     public string building;
 
     [Header("Build Options")]
     // Build time in seconds
-    public float buildTimeLeft = 9999;
-
-    public void SetPlayerStats()
-    {
-        // Set the color of the building to the player color (Takes only the first Children and its first Material).
-        GetComponentInChildren<MeshRenderer>().material.color = player.playerColor;
-        // Set the PlayerTag to the players PlayerTag.
-        playerTag = player.playerTag;
-    }
+    public float buildTimeLeft = 1F;
 
     private void Update()
     {
@@ -31,6 +20,9 @@ public class ConstructionSite : MonoBehaviour
         }
     }
 
+    /// <summary>
+    /// Builds the building.
+    /// </summary>
     private void FinishConstruction()
     {
         GameObject gameObject = (GameObject) Instantiate(Resources.Load(building), transform.position, transform.rotation);
@@ -39,25 +31,7 @@ public class ConstructionSite : MonoBehaviour
         finishedBuilding.player = player;
         finishedBuilding.playerTag = playerTag;
 
+        // Destory this object.
         Destruct();
-    }
-
-    private void Destruct()
-    {
-        Destroy(gameObject);
-    }
-
-    /// <summary>
-    /// Receive damage. The object health goes down.
-    /// </summary>
-    /// <param name="damage">The amount of damage dealt</param>
-    public void TakeDamage(float damage)
-    {
-        health -= damage;
-
-        if (health <= 0)
-        {
-            Destruct();
-        }
     }
 }

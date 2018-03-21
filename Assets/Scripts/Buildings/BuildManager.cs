@@ -45,12 +45,12 @@ public class BuildManager : MonoBehaviour
             // Set the stats of the construction site.
             ConstructionSite constructionSite = construction.GetComponent<ConstructionSite>();
 
-            constructionSite.buildTimeLeft = building.buildTime;
-            constructionSite.health = building.combatDefense.health / 2;
-            constructionSite.name = building.name + " Construction";
-            constructionSite.building = building.name;
-            constructionSite.player = player;
-            constructionSite.playerTag = player.playerTag;
+            constructionSite.buildTimeLeft          = building.buildTime;
+            constructionSite.combatDefense.health   = building.combatDefense.health / 2;
+            constructionSite.name                   = building.name + " Construction";
+            constructionSite.building               = building.name;
+            constructionSite.player                 = player;
+            constructionSite.playerTag              = player.playerTag;
             constructionSite.SetPlayerStats();
 
             // Delegate the responsible citizen to the construction site.
@@ -92,12 +92,12 @@ public class BuildManager : MonoBehaviour
             // Set the stats of the construction site.
             ConstructionSite constructionSite = construction.GetComponent<ConstructionSite>();
 
-            constructionSite.buildTimeLeft  = building.buildTime;
-            constructionSite.health         = building.combatDefense.health / 2;
-            constructionSite.name           = building.name + " Construction";
-            constructionSite.building       = building.name;
-            constructionSite.player         = player;
-            constructionSite.playerTag      = player.playerTag;
+            constructionSite.buildTimeLeft          = building.buildTime;
+            constructionSite.combatDefense.health   = building.combatDefense.health / 2;
+            constructionSite.name                   = building.name + " Construction";
+            constructionSite.building               = building.name;
+            constructionSite.player                 = player;
+            constructionSite.playerTag              = player.playerTag;
             constructionSite.SetPlayerStats();
 
             // Delegate all responsible citizen to the construction site.
@@ -145,21 +145,21 @@ public class BuildManager : MonoBehaviour
 
     private void Update()
     {
-        delay -= Time.deltaTime;
+        //delay -= Time.deltaTime;
 
-        if (delay <= 0 && n == 0)
-        {
-            Player player = FindObjectOfType<Player>();
-            Build(sawmill, new Vector3(200, 0, 200), player, FindPlayerCitizen(player));
-            n++;
-        }
+        //if (delay <= 0 && n == 0)
+        //{
+        //    Player player = FindObjectOfType<Player>();
+        //    Build(sawmill, new Vector3(200, 0, 200), player, FindPlayerCitizen(player));
+        //    n++;
+        //}
     }
 
     private Citizen[] FindPlayerCitizen(Player player)
     {
 
         Citizen[] citizen = FindObjectsOfType<Citizen>();
-        Citizen[] citizen2 = new Citizen[5];
+        Citizen[] citizen2 = new Citizen[citizen.Length];
         int j = 0;
         for (int i = 0; i < citizen.Length; i++)
         {
