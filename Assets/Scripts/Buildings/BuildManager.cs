@@ -145,14 +145,14 @@ public class BuildManager : MonoBehaviour
 
     private void Update()
     {
-        //delay -= Time.deltaTime;
+        delay -= Time.deltaTime;
 
-        //if (delay <= 0 && n == 0)
-        //{
-        //    Player player = FindObjectOfType<Player>();
-        //    Build(sawmill, new Vector3(200, 0, 200), player, FindPlayerCitizen(player));
-        //    n++;
-        //}
+        if (delay <= 0 && n == 0)
+        {
+            Player player = FindObjectOfType<Player>();
+            Build(sawmill, new Vector3(200, 0, 200), player, FindPlayerCitizen(player));
+            n++;
+        }
     }
 
     private Citizen[] FindPlayerCitizen(Player player)

@@ -31,19 +31,11 @@ public class CitizenState_Chase : State<Citizen>
                 citizen.ChangeState(CitizenState_Attack.Instance);
             }
 
-            //// Set the new target position.
-            //if (citizen.targetObject.transform.position != citizen.navMeshAgent.destination)
-            //{
-            //    citizen.navMeshAgent.SetDestination(citizen.targetObject.transform.position);
-            //}
-            // Move to the target resource
             if (citizen.targetObject != null && citizen.navMeshAgent.destination != citizen.targetObject.transform.position)
             {
                 citizen.navMeshAgent.SetDestination(citizen.targetObject.transform.position);
             }
         }
-
-        Debug.Log(citizen.navMeshAgent.pathEndPosition);
 
         // The target is null, resume idle.
         if (citizen.targetObject == null)
