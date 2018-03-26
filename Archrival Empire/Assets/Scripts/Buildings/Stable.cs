@@ -2,18 +2,40 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-//public class Stable : Building
-//{
-//    public Stable(Player player)
-//    {
-//        name = "Stable";
-//        health = 150;
-//        this.player = player;
+public class Stable : Building
+{
+    [Header("Barrack Options")]
+    public Unit cavalier;
 
-//        buildCost.food = 0;
-//        buildCost.wood = 150;
-//        buildCost.stone = 50;
-//        buildCost.gold = 0;
-//        buildTime = 10;
-//    }
-//}
+    private ProductionPipe productionPipe;
+
+
+    private void Start()
+    {
+        productionPipe = new ProductionPipe(this);
+
+        SetPlayerStats();
+    }
+
+    private void Update()
+    {
+        productionPipe.UpdatePipe();
+    }
+
+
+    /// <summary>
+    /// Trains a Cavalier and spawns it in front of the building (using ProductionPipe class).
+    /// </summary>
+    public void TrainCavalier()
+    {
+        // Check if the player has enough resources.
+        if (productionPipe.EnoughResources(cavalier))
+        {
+            // Remove the resource cost from the player resources.
+            player.resources.RemoveResources(cavalier.buildCost);
+
+            // Add the soldier to the production pipeline.
+            productionPipe.AddUnit(cavalier);
+        }
+    }
+}

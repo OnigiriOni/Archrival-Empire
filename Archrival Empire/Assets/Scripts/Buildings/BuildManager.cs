@@ -45,12 +45,11 @@ public class BuildManager : MonoBehaviour
             // Set the stats of the construction site.
             ConstructionSite constructionSite = construction.GetComponent<ConstructionSite>();
 
-            constructionSite.buildTimeLeft          = building.buildTime;
-            constructionSite.combatDefense.health   = building.combatDefense.health / 2;
-            constructionSite.name                   = building.name + " Construction";
-            constructionSite.building               = building.name;
-            constructionSite.player                 = player;
-            constructionSite.playerTag              = player.playerTag;
+            constructionSite.buildTimeLeft      = building.buildTime;
+            constructionSite.combatDefense      = building.combatDefense;
+            constructionSite.name               = building.name + " Construction";
+            constructionSite.building           = building.name;
+            constructionSite.player             = player;
             constructionSite.SetPlayerStats();
 
             // Delegate the responsible citizen to the construction site.
@@ -92,12 +91,11 @@ public class BuildManager : MonoBehaviour
             // Set the stats of the construction site.
             ConstructionSite constructionSite = construction.GetComponent<ConstructionSite>();
 
-            constructionSite.buildTimeLeft          = building.buildTime;
-            constructionSite.combatDefense.health   = building.combatDefense.health / 2;
-            constructionSite.name                   = building.name + " Construction";
-            constructionSite.building               = building.name;
-            constructionSite.player                 = player;
-            constructionSite.playerTag              = player.playerTag;
+            constructionSite.buildTimeLeft      = building.buildTime;
+            constructionSite.combatDefense      = building.combatDefense;
+            constructionSite.name               = building.name + " Construction";
+            constructionSite.building           = building.name;
+            constructionSite.player             = player;
             constructionSite.SetPlayerStats();
 
             // Delegate all responsible citizen to the construction site.

@@ -58,19 +58,18 @@ public class Unit : MonoBehaviour
     public PlayerTag playerTag;
     public Player player;
 
-    [System.NonSerialized]
-    public NavMeshAgent navMeshAgent;
-
     [Header("Build Options")]
     public BuildCost buildCost;
     
     // Build time in seconds
     public float buildTime;
-    public float buildTimeLeft;
 
     [Header("Combat Options")]
     public CombatDefense combatDefense;
     public CombatOffense combatOffense;
+
+    [System.NonSerialized]
+    public NavMeshAgent navMeshAgent;
 
     [System.NonSerialized]
     // The perceived units list holds enemy units and buildings.
@@ -79,6 +78,7 @@ public class Unit : MonoBehaviour
     [System.NonSerialized]
     // The target object is the object the unit is interacting with.
     public GameObject targetObject;
+
 
     public void SetPlayerStats()
     {

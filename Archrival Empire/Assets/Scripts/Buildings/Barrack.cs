@@ -9,6 +9,7 @@ public class Barrack : Building
 
     private ProductionPipe productionPipe;
 
+
     private void Start()
     {
         productionPipe = new ProductionPipe(this);
@@ -20,6 +21,7 @@ public class Barrack : Building
     {
         productionPipe.UpdatePipe();
     }
+
 
     /// <summary>
     /// Trains a Soldier and spawns it in front of the building (using ProductionPipe class).

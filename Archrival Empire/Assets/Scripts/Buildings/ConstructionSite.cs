@@ -12,6 +12,12 @@ public class ConstructionSite : Building
     // Build time in seconds
     public float buildTimeLeft = 1F;
 
+
+    private void Start()
+    {
+        SetPlayerStats();
+    }
+
     private void Update()
     {
         if (buildTimeLeft <= 0)
@@ -19,6 +25,7 @@ public class ConstructionSite : Building
             FinishConstruction();
         }
     }
+
 
     /// <summary>
     /// Builds the building.

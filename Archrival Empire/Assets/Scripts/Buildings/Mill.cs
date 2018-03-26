@@ -4,5 +4,8 @@ using UnityEngine;
 
 public class Mill : Building
 {
-
+    private void Start()
+    {
+        SetPlayerStats();
+    }
 }

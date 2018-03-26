@@ -10935,6 +10935,48 @@ Transform:
   m_PrefabParentObject: {fileID: 4098815643891542, guid: 7b6a2a97aa58d614ca28fa5404057129,
     type: 2}
   m_PrefabInternal: {fileID: 1225513724}
+--- !u!1001 &1228519473
+Prefab:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: 4304257329631340, guid: 48585ac9e6cbfe24db569a36052878d0, type: 2}
+      propertyPath: m_LocalPosition.x
+      value: -25.28
+      objectReference: {fileID: 0}
+    - target: {fileID: 4304257329631340, guid: 48585ac9e6cbfe24db569a36052878d0, type: 2}
+      propertyPath: m_LocalPosition.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4304257329631340, guid: 48585ac9e6cbfe24db569a36052878d0, type: 2}
+      propertyPath: m_LocalPosition.z
+      value: 2.22
+      objectReference: {fileID: 0}
+    - target: {fileID: 4304257329631340, guid: 48585ac9e6cbfe24db569a36052878d0, type: 2}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4304257329631340, guid: 48585ac9e6cbfe24db569a36052878d0, type: 2}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4304257329631340, guid: 48585ac9e6cbfe24db569a36052878d0, type: 2}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4304257329631340, guid: 48585ac9e6cbfe24db569a36052878d0, type: 2}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4304257329631340, guid: 48585ac9e6cbfe24db569a36052878d0, type: 2}
+      propertyPath: m_RootOrder
+      value: 27
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+  m_ParentPrefab: {fileID: 100100000, guid: 48585ac9e6cbfe24db569a36052878d0, type: 2}
+  m_IsPrefabParent: 0
 --- !u!1001 &1254424020
 Prefab:
   m_ObjectHideFlags: 0
@@ -17090,7 +17132,7 @@ MonoBehaviour:
   sawmill: {fileID: 114974411949431000, guid: e10f14edea6d82e47b6a75c9f38f9e0b, type: 2}
   mine: {fileID: 114232469111684354, guid: 713c10ece894e2e46b2607814af376b1, type: 2}
   barrack: {fileID: 114627436867832822, guid: 9a862e4bd5026df4390d686804d5b421, type: 2}
-  stable: {fileID: 0}
+  stable: {fileID: 114995832484129250, guid: 48585ac9e6cbfe24db569a36052878d0, type: 2}
   foundry: {fileID: 114272936981263456, guid: fd52100ea0795814a8e9c553e0e8b7eb, type: 2}
   tower: {fileID: 114267338867716902, guid: fc46db6b4c8190b4288058d14bd7ae42, type: 2}
 --- !u!1001 &1807699125

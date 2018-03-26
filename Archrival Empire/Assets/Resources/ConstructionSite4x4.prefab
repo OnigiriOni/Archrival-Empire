@@ -514,9 +514,25 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   name: 
-  health: 0
   playerTag: 0
   player: {fileID: 0}
+  buildCost:
+    food: 0
+    wood: 0
+    stone: 0
+    gold: 0
+  buildTime: 0
+  constructionSiteSize: 0
+  resourceCapacity:
+    canStoreFood: 0
+    canStoreWood: 0
+    canStoreStone: 0
+    canStoreGold: 0
+  combatDefense:
+    health: 300
+    mormalArmor: 80
+    pierceArmor: 80
+    siegeArmor: 30
   building: 
   buildTimeLeft: 1
 --- !u!208 &208606223416585408

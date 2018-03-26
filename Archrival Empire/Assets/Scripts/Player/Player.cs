@@ -2,11 +2,6 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-// Blue (metall / smooth mats): 0074FFFF
-// Blue (normal mats):          0039FFFF
-
-// Red  (all):                  00FF00FF
-
 public enum PlayerTag
 {
     Gaia,
@@ -73,11 +68,4 @@ public class Player : MonoBehaviour
     public PlayerTag playerTag;
     public Color playerColor;
     public PlayerResource resources;
-
-    //public Player(PlayerTag playerTag, Color playerColor, PlayerResource resources)
-    //{
-    //    this.playerTag = playerTag;
-    //    this.playerColor = playerColor;
-    //    this.resources = resources;
-    //}
 }

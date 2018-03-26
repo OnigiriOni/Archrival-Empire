@@ -9,6 +9,7 @@ public class Capitol : Building
 
     private ProductionPipe productionPipe;
 
+
     private void Start()
     {
         productionPipe = new ProductionPipe(this);
@@ -20,6 +21,7 @@ public class Capitol : Building
     {
         productionPipe.UpdatePipe();
     }
+
 
     /// <summary>
     /// Trains a citizen and spawns it in front of the building (using ProductionPipe class).

@@ -4,5 +4,8 @@ using UnityEngine;
 
 public class Mine : Building
 {
-
+    private void Start()
+    {
+        SetPlayerStats();
+    }
 }

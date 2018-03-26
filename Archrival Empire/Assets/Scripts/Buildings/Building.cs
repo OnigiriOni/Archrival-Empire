@@ -153,16 +153,10 @@ public class Building : MonoBehaviour
     [Header("Combat Options")]
     public CombatDefense combatDefense;
 
-    private void Start()
-    {
-        SetPlayerStats();
-    }
 
-    private void Update()
-    {
-
-    }
-
+    /// <summary>
+    /// Sets the playerColor of the building and the playerTag.
+    /// </summary>
     public void SetPlayerStats()
     {
         // Set the color of the building to the player color (Takes only the first Children and its first Material).
@@ -171,13 +165,16 @@ public class Building : MonoBehaviour
         playerTag = player.playerTag;
     }
 
+    /// <summary>
+    /// Destroys the GameObject.
+    /// </summary>
     protected void Destruct()
     {
         Destroy(gameObject);
     }
 
     /// <summary>
-    /// Receive damage. The object health goes down.
+    /// Calculate the amount of damage the building receive.
     /// </summary>
     /// <param name="damage">The amount of damage dealt</param>
     public void TakeDamage(DamageStruct damage)

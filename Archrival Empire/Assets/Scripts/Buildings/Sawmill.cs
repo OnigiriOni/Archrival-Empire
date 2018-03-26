@@ -4,5 +4,8 @@ using UnityEngine;
 
 public class Sawmill : Building
 {
-
+    private void Start()
+    {
+        SetPlayerStats();
+    }
 }

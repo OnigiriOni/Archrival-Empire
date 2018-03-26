@@ -5,7 +5,7 @@ using UnityEngine.UI;
 
 public class UpdateUI : MonoBehaviour
 {
-    private Game game;
+    //private Game game;
 
     // Game
     public Text maxPopulationValue;
@@ -37,14 +37,14 @@ public class UpdateUI : MonoBehaviour
     public Text goldValuePlayer2;
 
     void Start () {
-        game = GameObject.Find("Game").GetComponent<Game>();
+        //game = GameObject.Find("Game").GetComponent<Game>();
     }
 
 	void Update()
     {
-        UpdateGame();
-        UpdatePlayer1();
-        UpdatePlayer2();
+        //UpdateGame();
+        //UpdatePlayer1();
+        //UpdatePlayer2();
 	}
 
     /// <summary>
@@ -52,8 +52,8 @@ public class UpdateUI : MonoBehaviour
     /// </summary>
     void UpdateGame()
     {
-        maxPopulationValue.text = game.maxPopulation.ToString();
-        startCitizenValue.text = game.startCitizen.ToString();
+        //maxPopulationValue.text = game.maxPopulation.ToString();
+        //startCitizenValue.text = game.startCitizen.ToString();
 
         //startFoodValue.text = game.startResources.food.ToString();
         //startWoodValue.text = game.startResources.wood.ToString();

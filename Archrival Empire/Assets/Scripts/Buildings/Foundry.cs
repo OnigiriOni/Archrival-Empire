@@ -9,6 +9,7 @@ public class Foundry : Building
     
     private ProductionPipe productionPipe;
 
+
     private void Start()
     {
         productionPipe = new ProductionPipe(this);
@@ -20,6 +21,7 @@ public class Foundry : Building
     {
         productionPipe.UpdatePipe();
     }
+
 
     /// <summary>
     /// Trains an Artillery and spawns it in front of the building (using ProductionPipe class).
