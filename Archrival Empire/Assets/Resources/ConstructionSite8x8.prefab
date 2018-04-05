@@ -801,9 +801,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fe4713441d494d640b6aedfe83cc3340, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  name: 
+  influenceMap: {fileID: 114044121981467064, guid: bfb46db2c00935e41959ef987f01929a,
+    type: 2}
   playerTag: 0
   player: {fileID: 0}
+  name: 
   buildCost:
     food: 0
     wood: 0

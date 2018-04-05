@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
+// The size of the building.
 public enum ConstructionSiteSize
 {
     Size4x4,
@@ -133,12 +134,10 @@ public class ProductionPipe : MonoBehaviour
     }
 }
 
-public class Building : MonoBehaviour
+public class Building : PlayerObject
 {
     [Header("Building Options")]
     public new string name;
-    public PlayerTag playerTag;
-    public Player player;
 
     [Header("Build Options")]
     public BuildCost buildCost;
@@ -152,18 +151,6 @@ public class Building : MonoBehaviour
 
     [Header("Combat Options")]
     public CombatDefense combatDefense;
-
-
-    /// <summary>
-    /// Sets the playerColor of the building and the playerTag.
-    /// </summary>
-    public void SetPlayerStats()
-    {
-        // Set the color of the building to the player color (Takes only the first Children and its first Material).
-        GetComponentInChildren<MeshRenderer>().material.color = player.playerColor;
-        // Set the PlayerTag to the players PlayerTag.
-        playerTag = player.playerTag;
-    }
 
     /// <summary>
     /// Destroys the GameObject.

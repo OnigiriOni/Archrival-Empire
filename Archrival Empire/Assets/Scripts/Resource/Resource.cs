@@ -26,7 +26,7 @@ public class Resource : MonoBehaviour
     /// <summary>
     /// Transfer an amount of resources from this object to another object by using this method.
     /// </summary>
-    /// <param name="amount">The amount to be removed</param>
+    /// <param name="amount">The amount to be removed.</param>
     /// <returns>the actual amount as int.</returns>
     public int GatherResource(int amount)
     {

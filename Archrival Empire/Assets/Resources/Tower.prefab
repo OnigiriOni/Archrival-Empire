@@ -616,9 +616,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: af988124831bfc241bb44b2afc28909f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  name: Tower
+  influenceMap: {fileID: 114044121981467064, guid: bfb46db2c00935e41959ef987f01929a,
+    type: 2}
   playerTag: 0
   player: {fileID: 0}
+  name: Tower
   buildCost:
     food: 0
     wood: 0

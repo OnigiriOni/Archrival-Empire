@@ -56,7 +56,7 @@ public class CitizenState_GatherResource : State<Citizen>
             }
         }
 
-        // Gather the resource if the target resource is in range
+        // Gather the resource if the target resource is in range.
         if (citizen.targetResource != null && citizen.perceivedObjectsInRange.Contains(citizen.targetResource.gameObject))
         {
             citizen.navMeshAgent.ResetPath();
@@ -64,7 +64,7 @@ public class CitizenState_GatherResource : State<Citizen>
         }
         else
         {
-            // Move to the target resource
+            // Move to the target resource.
             if (citizen.targetResource != null && citizen.navMeshAgent.destination != citizen.targetResource.transform.position)
             {
                 citizen.navMeshAgent.SetDestination(citizen.targetResource.transform.position);

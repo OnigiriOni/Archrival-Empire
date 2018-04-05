@@ -373,16 +373,17 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c12acabb41c63c94da97c593c19bff0a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  name: Citizen
+  influenceMap: {fileID: 114044121981467064, guid: bfb46db2c00935e41959ef987f01929a,
+    type: 2}
   playerTag: 0
   player: {fileID: 0}
+  name: Citizen
   buildCost:
     food: 50
     wood: 0
     stone: 0
     gold: 0
   buildTime: 3
-  buildTimeLeft: 0
   combatDefense:
     health: 100
     mormalArmor: 0

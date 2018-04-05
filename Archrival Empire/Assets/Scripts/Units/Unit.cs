@@ -4,6 +4,7 @@ using UnityEngine;
 using UnityEngine.AI;
 
 [System.Serializable]
+// Combat Offense is used by all entities that are able to attack.
 public struct CombatOffense
 {
     public float normalDamage;
@@ -13,7 +14,7 @@ public struct CombatOffense
     [Space(10)]
     public float attackRange;
 
-    // Cooldown in seconds
+    // Cooldown in seconds.
     public float damageCooldown;
     [System.NonSerialized]
     public float damageCooldownLeft;
@@ -33,17 +34,19 @@ public struct CombatOffense
 }
 
 [System.Serializable]
+// Combat Defense is used by all entities.
 public struct CombatDefense
 {
     public float health;
 
     [Space(10)]
-    // Armor in percent
+    // Armor in percent.
     public float mormalArmor;
     public float pierceArmor;
     public float siegeArmor;
 }
 
+// The DamageStruct is passed to units for damage calculations.
 public struct DamageStruct
 {
     public float normalDamage;
@@ -51,12 +54,10 @@ public struct DamageStruct
     public float siegeDamage;
 }
 
-public class Unit : MonoBehaviour
+public class Unit : PlayerObject
 {
     [Header("Unit Options")]
     public new string name;
-    public PlayerTag playerTag;
-    public Player player;
 
     [Header("Build Options")]
     public BuildCost buildCost;
@@ -78,15 +79,6 @@ public class Unit : MonoBehaviour
     [System.NonSerialized]
     // The target object is the object the unit is interacting with.
     public GameObject targetObject;
-
-
-    public void SetPlayerStats()
-    {
-        // Set the color of the building to the player color (Takes only the first Children and its first Material).
-        GetComponentInChildren<MeshRenderer>().material.color = player.playerColor;
-        // Set the PlayerTag to the players PlayerTag.
-        playerTag = player.playerTag;
-    }
 
     private void Destruct()
     {

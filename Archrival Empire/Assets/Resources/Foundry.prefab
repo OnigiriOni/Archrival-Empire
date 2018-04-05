@@ -585,9 +585,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: df70172cce6a88042a2ec0a9bc3c5e32, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  name: Foundry
+  influenceMap: {fileID: 114044121981467064, guid: bfb46db2c00935e41959ef987f01929a,
+    type: 2}
   playerTag: 0
   player: {fileID: 0}
+  name: Foundry
   buildCost:
     food: 0
     wood: 200

@@ -2,9 +2,10 @@
 using System.Collections.Generic;
 using UnityEngine;
 
+// The player tag to distinguish between players.
 public enum PlayerTag
 {
-    Gaia,
+    Gaia,       // Gaia is the ancestral mother of all life: the primal Mother Earth goddess. Used for non player entities.
     Player1,
     Player2,
     Player3,
@@ -65,7 +66,12 @@ public struct PlayerResource
 
 public class Player : MonoBehaviour
 {
+    // The player tag is used to indentify a player.
     public PlayerTag playerTag;
+    
+    // The Color of the player is used to colour buildings and units.
     public Color playerColor;
+
+    // The resources of a player.
     public PlayerResource resources;
 }

@@ -3,16 +3,17 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.AI;
 
+// The WorkerGroup is used to identify citizen actions.
 public enum WorkerGroup
 {
-    Idle,
-    GatherFood,
-    GatherWood,
-    GatherStone,
-    GatherGold,
-    Builder,
-    Fighter,
-    Other
+    Idle,           // The citizen does nothing.
+    GatherFood,     // The citizen is collecting food.
+    GatherWood,     // The citizen is collecting wood.
+    GatherStone,    // The citizen is collecting stone.
+    GatherGold,     // The citizen is collecting gold.
+    Builder,        // The citizen is building.
+    Fighter,        // The citizen is in combat.
+    Other           // The citizen is just walking.
 }
 
 public class Backpack

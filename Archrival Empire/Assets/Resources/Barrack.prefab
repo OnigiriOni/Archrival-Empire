@@ -657,9 +657,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2ab7aef2b9da73f4c8ed202caf740043, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  name: Barrack
+  influenceMap: {fileID: 114044121981467064, guid: bfb46db2c00935e41959ef987f01929a,
+    type: 2}
   playerTag: 0
   player: {fileID: 0}
+  name: Barrack
   buildCost:
     food: 0
     wood: 100

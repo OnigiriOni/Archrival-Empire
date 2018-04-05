@@ -1377,9 +1377,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: be30d81d501da6040aaa74b420f04bb7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  name: Mill
+  influenceMap: {fileID: 114044121981467064, guid: bfb46db2c00935e41959ef987f01929a,
+    type: 2}
   playerTag: 0
   player: {fileID: 0}
+  name: Mill
   buildCost:
     food: 0
     wood: 100

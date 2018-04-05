@@ -873,9 +873,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c1418b509b89c0947be7a619d42d1495, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  name: Capitol
+  influenceMap: {fileID: 114044121981467064, guid: bfb46db2c00935e41959ef987f01929a,
+    type: 2}
   playerTag: 0
   player: {fileID: 0}
+  name: Capitol
   buildCost:
     food: 300
     wood: 300
