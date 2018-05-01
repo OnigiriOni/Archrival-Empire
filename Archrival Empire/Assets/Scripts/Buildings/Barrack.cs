@@ -7,6 +7,7 @@ public class Barrack : Building
     [Header("Barrack Options")]
     public Unit soldier;
 
+    // The production pipe builds units.
     private ProductionPipe productionPipe;
 
 
@@ -15,11 +16,20 @@ public class Barrack : Building
         productionPipe = new ProductionPipe(this);
 
         SetPlayerStats();
+        AddToPlayerList();
     }
 
     private void Update()
     {
         productionPipe.UpdatePipe();
+    }
+
+    /// <summary>
+    /// Add the barrack to the player list for better access.
+    /// </summary>
+    protected override void AddToPlayerList()
+    {
+        player.barrackList.Add(this);
     }
 
 

@@ -13,6 +13,7 @@ public class Soldier : Unit
     {
         // Set the player color and player tag.
         SetPlayerStats();
+        AddToPlayerList();
 
         // Set stuff up before the state machine, because it uses this.
         perceivedObjectsInRange = new List<GameObject>();
@@ -33,6 +34,14 @@ public class Soldier : Unit
 
         // Update the state maschine.
         stateMachine.Update();
+    }
+
+    /// <summary>
+    /// Add the soldier to the player list for better access.
+    /// </summary>
+    protected override void AddToPlayerList()
+    {
+        player.soldierList.Add(this);
     }
 
 

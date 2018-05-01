@@ -74,4 +74,39 @@ public class Player : MonoBehaviour
 
     // The resources of a player.
     public PlayerResource resources;
+
+
+    private void Update()
+    {
+        // Clears the lists from null pointer.
+        citizenList.ForEach(x => { if (x == null) citizenList.Remove(x); });
+        soldierList.ForEach(x => { if (x == null) soldierList.Remove(x); });
+        cavalierList.ForEach(x => { if (x == null) cavalierList.Remove(x); });
+        artilleryList.ForEach(x => { if (x == null) artilleryList.Remove(x); });
+
+        capitolList.ForEach(x => { if (x == null) capitolList.Remove(x); });
+        millList.ForEach(x => { if (x == null) millList.Remove(x); });
+        sawmillList.ForEach(x => { if (x == null) sawmillList.Remove(x); });
+        mineList.ForEach(x => { if (x == null) mineList.Remove(x); });
+        barrackList.ForEach(x => { if (x == null) barrackList.Remove(x); });
+        stableList.ForEach(x => { if (x == null) stableList.Remove(x); });
+        foundryList.ForEach(x => { if (x == null) foundryList.Remove(x); });
+        towerList.ForEach(x => { if (x == null) towerList.Remove(x); });
+        constructionList.ForEach(x => { if (x == null) constructionList.Remove(x); });
+    }
+
+    public List<Citizen> citizenList;
+    public List<Soldier> soldierList;
+    public List<Cavalier> cavalierList;
+    public List<Artillery> artilleryList;
+
+    public List<Capitol> capitolList;
+    public List<Mill> millList;
+    public List<Sawmill> sawmillList;
+    public List<Mine> mineList;
+    public List<Barrack> barrackList;
+    public List<Stable> stableList;
+    public List<Foundry> foundryList;
+    public List<Tower> towerList;
+    public List<ConstructionSite> constructionList;
 }

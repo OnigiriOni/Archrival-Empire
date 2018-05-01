@@ -7,6 +7,7 @@ public class Stable : Building
     [Header("Barrack Options")]
     public Unit cavalier;
 
+    // The production pipe builds units.
     private ProductionPipe productionPipe;
 
 
@@ -15,11 +16,20 @@ public class Stable : Building
         productionPipe = new ProductionPipe(this);
 
         SetPlayerStats();
+        AddToPlayerList();
     }
 
     private void Update()
     {
         productionPipe.UpdatePipe();
+    }
+
+    /// <summary>
+    /// Add the stable to the player list for better access.
+    /// </summary>
+    protected override void AddToPlayerList()
+    {
+        player.stableList.Add(this);
     }
 
 

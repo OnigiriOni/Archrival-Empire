@@ -7,6 +7,7 @@ public class Capitol : Building
     [Header("Capitol Options")]
     public Unit citizen;
 
+    // The production pipe builds units.
     private ProductionPipe productionPipe;
 
 
@@ -15,11 +16,20 @@ public class Capitol : Building
         productionPipe = new ProductionPipe(this);
 
         SetPlayerStats();
+        AddToPlayerList();
     }
 
     private void Update()
     {
         productionPipe.UpdatePipe();
+    }
+
+    /// <summary>
+    /// Add the capitol to the player list for better access.
+    /// </summary>
+    protected override void AddToPlayerList()
+    {
+        player.capitolList.Add(this);
     }
 
 

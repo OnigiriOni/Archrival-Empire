@@ -135,6 +135,7 @@ public class Citizen : Unit
     [System.NonSerialized]
     public float resourceCollectionCooldownLeft = 0F;
 
+    // The state machine for the citizen.
     private StateMachine<Citizen> stateMachine;
 
     [System.NonSerialized]
@@ -150,6 +151,7 @@ public class Citizen : Unit
     {
         // Set the player color and player tag.
         SetPlayerStats();
+        AddToPlayerList();
 
         // Set stuff up before the state machine, because it uses this.
         navMeshAgent = GetComponent<NavMeshAgent>();
@@ -159,21 +161,6 @@ public class Citizen : Unit
         // Initialize the state machine. Do this after everything else.
         stateMachine = new StateMachine<Citizen>();
         stateMachine.Initialize(this, CitizenState_Idle.Instance);
-
-
-
-
-
-
-        //TODO: cut out the test scripts.
-        ///////////////////////////////////////////////////////////////
-        // T E S T    S C R I P T S
-        ///////////////////////////////////////////////////////////////
-
-        Attack(GameObject.Find("Capitol (2)"));
-        //DeliverResources(GameObject.Find("Mill").GetComponent<Mill>());
-        //GatherResource(GameObject.Find("Resource_Stone").GetComponent<Resource>());
-        //MoveTo(new Vector3(185, 0, 185));
     }
 
     private void Update()
@@ -187,6 +174,15 @@ public class Citizen : Unit
         // Update the state machine.
         stateMachine.Update(); 
     }
+
+    /// <summary>
+    /// Add the citizen to the player list for better access.
+    /// </summary>
+    protected override void AddToPlayerList()
+    {
+        player.citizenList.Add(this);
+    }
+
 
     /// <summary>
     /// Calculates the resource collection cooldown.

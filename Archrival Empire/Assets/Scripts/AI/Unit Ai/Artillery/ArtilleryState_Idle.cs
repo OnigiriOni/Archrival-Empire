@@ -22,7 +22,6 @@ public class ArtilleryState_Idle : State<Artillery>
 
     public override void Execute(Artillery artillery)
     {
-        Debug.Log("Hi");
         // If enemies are around shoot them.
         if (artillery.perceivedObjectsInRange.Count > 0)
         {

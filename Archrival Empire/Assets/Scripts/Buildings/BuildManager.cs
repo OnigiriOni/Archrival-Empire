@@ -128,46 +128,4 @@ public class BuildManager : MonoBehaviour
         }
         return false;
     }
-
-
-
-
-
-
-    //TODO: cut out the test scripts.
-    ///////////////////////////////////////////////////////////////
-    // T E S T    S C R I P T S
-    ///////////////////////////////////////////////////////////////
-    private float delay = 2;
-    private int n = 0;
-
-    private void Update()
-    {
-        delay -= Time.deltaTime;
-
-        if (delay <= 0 && n == 0)
-        {
-            Player player = FindObjectOfType<Player>();
-            Build(sawmill, new Vector3(200, 0, 200), player, FindPlayerCitizen(player));
-            n++;
-        }
-    }
-
-    private Citizen[] FindPlayerCitizen(Player player)
-    {
-
-        Citizen[] citizen = FindObjectsOfType<Citizen>();
-        Citizen[] citizen2 = new Citizen[citizen.Length];
-        int j = 0;
-        for (int i = 0; i < citizen.Length; i++)
-        {
-            if (citizen[i].playerTag == player.playerTag)
-            {
-                citizen2[j] = citizen[i];
-                j++;
-            }
-        }
-
-        return citizen2;
-    }
 }

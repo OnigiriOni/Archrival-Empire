@@ -54,7 +54,7 @@ public struct DamageStruct
     public float siegeDamage;
 }
 
-public class Unit : PlayerObject
+public abstract class Unit : PlayerObject
 {
     [Header("Unit Options")]
     public new string name;
@@ -80,6 +80,9 @@ public class Unit : PlayerObject
     // The target object is the object the unit is interacting with.
     public GameObject targetObject;
 
+    /// <summary>
+    /// Destroyes the game object
+    /// </summary>
     private void Destruct()
     {
         Destroy(gameObject);
@@ -104,4 +107,6 @@ public class Unit : PlayerObject
             Destruct();
         }
     }
+
+    protected override abstract void AddToPlayerList();
 }

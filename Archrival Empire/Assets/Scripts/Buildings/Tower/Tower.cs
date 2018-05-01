@@ -20,6 +20,7 @@ public class Tower : Building
     {
         // Set the player color and player tag.
         SetPlayerStats();
+        AddToPlayerList();
 
         perceivedUnits = new List<Unit>();
     }
@@ -37,6 +38,14 @@ public class Tower : Building
         {
             Attack(targetUnit);
         }
+    }
+
+    /// <summary>
+    /// Add the tower to the player list for better access.
+    /// </summary>
+    protected override void AddToPlayerList()
+    {
+        player.towerList.Add(this);
     }
 
 

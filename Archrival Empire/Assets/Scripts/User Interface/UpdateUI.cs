@@ -3,38 +3,42 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
+//////////////////////////////////////////////////////////////////////////////////
+//////  C L A S S    N O T    I N    U S E
+//////////////////////////////////////////////////////////////////////////////////
+
 public class UpdateUI : MonoBehaviour
 {
     //private Game game;
 
     // Game
-    public Text maxPopulationValue;
-    public Text startCitizenValue;
+    //public Text maxPopulationValue;
+    //public Text startCitizenValue;
 
-    public Text startFoodValue;
-    public Text startWoodValue;
-    public Text startStoneValue;
-    public Text startGoldValue;
+    //public Text startFoodValue;
+    //public Text startWoodValue;
+    //public Text startStoneValue;
+    //public Text startGoldValue;
 
 
     // Player 1
-    public Text civNamePlayer1;
-    public Image colorValuePlayer1;
+    //public Text civNamePlayer1;
+    //public Image colorValuePlayer1;
 
-    public Text foodValuePlayer1;
-    public Text woodValuePlayer1;
-    public Text stoneValuePlayer1;
-    public Text goldValuePlayer1;
+    //public Text foodValuePlayer1;
+    //public Text woodValuePlayer1;
+    //public Text stoneValuePlayer1;
+    //public Text goldValuePlayer1;
 
 
     // Player 2
-    public Text civNamePlayer2;
-    public Image colorValuePlayer2;
+    //public Text civNamePlayer2;
+    //public Image colorValuePlayer2;
 
-    public Text foodValuePlayer2;
-    public Text woodValuePlayer2;
-    public Text stoneValuePlayer2;
-    public Text goldValuePlayer2;
+    //public Text foodValuePlayer2;
+    //public Text woodValuePlayer2;
+    //public Text stoneValuePlayer2;
+    //public Text goldValuePlayer2;
 
     void Start () {
         //game = GameObject.Find("Game").GetComponent<Game>();

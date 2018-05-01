@@ -7,6 +7,7 @@ public class Foundry : Building
     [Header("Foudry Options")]
     public Unit artillery;
     
+    // The production pipe builds units.
     private ProductionPipe productionPipe;
 
 
@@ -15,11 +16,20 @@ public class Foundry : Building
         productionPipe = new ProductionPipe(this);
 
         SetPlayerStats();
+        AddToPlayerList();
     }
 
     private void Update()
     {
         productionPipe.UpdatePipe();
+    }
+
+    /// <summary>
+    /// Add the foundry to the player list for better access.
+    /// </summary>
+    protected override void AddToPlayerList()
+    {
+        player.foundryList.Add(this);
     }
 
 

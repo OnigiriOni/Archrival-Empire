@@ -21,11 +21,17 @@ public struct BuildCost
 [System.Serializable]
 public struct ResourceCapacity
 {
+    // Indicates if a building can take resources from citizen.
     public bool canStoreFood;
     public bool canStoreWood;
     public bool canStoreStone;
     public bool canStoreGold;
 
+    /// <summary>
+    /// Returns if a building can store a specific resource.
+    /// </summary>
+    /// <param name="resourceType">The resource type that should be accepted.</param>
+    /// <returns>True if the building can take the resource.</returns>
     public bool CanStore(ResourceType resourceType)
     {
         switch(resourceType)
@@ -54,7 +60,9 @@ public class ProductionPipe : MonoBehaviour
         }
     }
 
+    // The building of this construction pipe.
     private Building building;
+
     private List<BuildTime> productionPipe = new List<BuildTime>();
 
     public ProductionPipe(Building building)
@@ -134,7 +142,7 @@ public class ProductionPipe : MonoBehaviour
     }
 }
 
-public class Building : PlayerObject
+public abstract class Building : PlayerObject
 {
     [Header("Building Options")]
     public new string name;
@@ -144,6 +152,7 @@ public class Building : PlayerObject
 
     // Build time in seconds
     public float buildTime;
+
     public ConstructionSiteSize constructionSiteSize;
 
     [Header("Resource Options")]
@@ -179,4 +188,6 @@ public class Building : PlayerObject
             Destruct();
         }
     }
+
+    protected override abstract void AddToPlayerList();
 }

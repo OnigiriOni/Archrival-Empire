@@ -16,6 +16,7 @@ public class ConstructionSite : Building
     private void Start()
     {
         SetPlayerStats();
+        AddToPlayerList();
     }
 
     private void Update()
@@ -26,6 +27,13 @@ public class ConstructionSite : Building
         }
     }
 
+    /// <summary>
+    /// Add the construction site to the player list for better access.
+    /// </summary>
+    protected override void AddToPlayerList()
+    {
+        player.constructionList.Add(this);
+    }
 
     /// <summary>
     /// Builds the building.

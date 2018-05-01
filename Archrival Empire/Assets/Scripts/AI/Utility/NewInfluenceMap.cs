@@ -2,25 +2,40 @@
 using System.Collections.Generic;
 using UnityEngine;
 
+//////////////////////////////////////////////////////////////////////////////////
+//////  C L A S S    N O T    I N    U S E
+//////////////////////////////////////////////////////////////////////////////////
+
 public class NewInfluenceMap : MonoBehaviour
 {
+    // The size of all sides of the map.
     public int influenceMapSize;
+
+    // The space between two grid positions.
     public int influenceMap_gridSize;
 
+    // The width and height of the map.
     private int influenceMap_width;
     private int influenceMap_height;
 
+    // The decay of the influence over two grid positions.
     public float influenceDecay;
 
+    // The amount of updates per second.
     public float updateFrequency;
     private float updateFrequencyLeft = 0F;
 
+    // A list of all objects that influences the map.
     private List<PlayerObject> playerObjects;
 
+    // The influence map and the influence map buffer.
     private GridPosition[,] map;
     private GridPosition[,] mapBuffer;
+    
+    // The texture to visualise the influence spread over the map.
     private Texture2D influenceMap_texture;
 
+    // The momentum is used for the influence spread calculation.
     float momentum = 5F;
 
 
@@ -132,6 +147,9 @@ public class NewInfluenceMap : MonoBehaviour
         }
     }
 
+    /// <summary>
+    /// Set the influence according to its strength and delay on all grid positions on the entire map.
+    /// </summary>
     private void UpdateMap()
     {
         for (int x = 0; x < influenceMap_gridSize; x++)
