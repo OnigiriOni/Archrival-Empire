@@ -295,7 +295,7 @@ GameObject:
   - component: {fileID: 65533496646942050}
   - component: {fileID: 208695130244919500}
   - component: {fileID: 114232469111684354}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: Mine
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1379,6 +1379,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   influenceMap: {fileID: 114044121981467064, guid: bfb46db2c00935e41959ef987f01929a,
     type: 2}
+  influence: 0
+  influenceRange: 0
   playerTag: 0
   player: {fileID: 0}
   name: Mine

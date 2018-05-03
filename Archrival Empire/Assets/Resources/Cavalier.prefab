@@ -206,7 +206,7 @@ GameObject:
   - component: {fileID: 195239633837407672}
   - component: {fileID: 54079460605470932}
   - component: {fileID: 114334580758491978}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: Cavalier
   m_TagString: Untagged
   m_Icon: {fileID: 0}

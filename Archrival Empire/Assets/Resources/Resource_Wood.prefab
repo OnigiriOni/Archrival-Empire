@@ -25,7 +25,7 @@ GameObject:
   - component: {fileID: 65124643040432760}
   - component: {fileID: 208756526985437488}
   - component: {fileID: 114035094012335986}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: Resource_Wood
   m_TagString: Resource_Wood
   m_Icon: {fileID: 0}

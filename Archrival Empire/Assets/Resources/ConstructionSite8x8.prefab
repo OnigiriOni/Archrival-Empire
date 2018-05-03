@@ -57,7 +57,7 @@ GameObject:
   - component: {fileID: 208100839559031626}
   - component: {fileID: 65632307710665142}
   - component: {fileID: 114489367966384478}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: ConstructionSite8x8
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -803,6 +803,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   influenceMap: {fileID: 114044121981467064, guid: bfb46db2c00935e41959ef987f01929a,
     type: 2}
+  influence: 0
+  influenceRange: 0
   playerTag: 0
   player: {fileID: 0}
   name: 

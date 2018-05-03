@@ -77,7 +77,7 @@ GameObject:
   - component: {fileID: 195062014577969748}
   - component: {fileID: 54625045802792110}
   - component: {fileID: 114861521345219748}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: Soldier
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -458,6 +458,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   influenceMap: {fileID: 114044121981467064, guid: bfb46db2c00935e41959ef987f01929a,
     type: 2}
+  influence: 0
+  influenceRange: 0
   playerTag: 0
   player: {fileID: 0}
   name: Soldier

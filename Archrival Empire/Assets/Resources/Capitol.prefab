@@ -176,7 +176,7 @@ GameObject:
   - component: {fileID: 65371505956721560}
   - component: {fileID: 208697521543911948}
   - component: {fileID: 114800384442789936}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: Capitol
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -875,6 +875,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   influenceMap: {fileID: 114044121981467064, guid: bfb46db2c00935e41959ef987f01929a,
     type: 2}
+  influence: 0
+  influenceRange: 0
   playerTag: 0
   player: {fileID: 0}
   name: Capitol

@@ -72,7 +72,7 @@ GameObject:
   - component: {fileID: 195135157542897256}
   - component: {fileID: 54438131533773376}
   - component: {fileID: 114592784667826252}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: Artillery
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -491,6 +491,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   influenceMap: {fileID: 114044121981467064, guid: bfb46db2c00935e41959ef987f01929a,
     type: 2}
+  influence: 0
+  influenceRange: 0
   playerTag: 0
   player: {fileID: 0}
   name: Artillery

@@ -172,7 +172,7 @@ public class Citizen : Unit
         CalculateResourceCollectionCooldown();
 
         // Update the state machine.
-        stateMachine.Update(); 
+        stateMachine.Update();
     }
 
     /// <summary>
